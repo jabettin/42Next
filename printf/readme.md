@@ -1,25 +1,26 @@
 `This project has been created as a part of the 42 curriculum by: jabettin`
 
 
-> ## Description ##
-ft_printf as a program, should- almost exactly replicate the behavior of printf from the standard input, output library, or just: <stdio.h>. With a few exceptions, which are stated in the subject file of ft_printf. This ft_printf does **NOT** include the bonus excercise
+ ## Description ## 
+>ft_printf as a program, should- almost exactly replicate the behavior of printf from the standard input, output library, or just: <stdio.h>. With a few exceptions, which are stated in the subject file of ft_printf. This ft_printf does **NOT** include the bonus excercise
 Printf at its core, could be simply summarized as follows: printf works by iterating over the format string character by character. When a `%` character is encountered, it signals the start of a format instruction. The character following % is interpreted as a `format specifier`, which determines how the next argument from the `variadic argument list` should be processed and printed. For example: *`%s`*, *`%d`*. All other characters are printed directly to the standard output
 
 
-> --- ## Instructions ## ---
-Because ft_printf makes use of a Makefile, as required by the subject file. The first step is to write `make` in your terminal.
+## Instructions ##
+>Because ft_printf makes use of a Makefile, as required by the subject file. The first step is to write `make` in your terminal.
 Now we can compile. This will happen with the three standard flags: -Wall -Wextra -Werror and is typed as follows:
 `cc -Werror -Wall -Wextra libftprintf.a main.c -o test`
 After which it can be ran using **./test**.
 To get rid of the `.a` and `.o` file(s) after having used `make`
 you can either write: `make clean` which will get rid of all the `.o` files, but leaves the **libftprintf.a**
-If you also want to clean that file make sure to use the following command: `make fclean`. **make fclean will also get rid of any `.o` files**
+If you also want to clean that file make sure to use the following command: `make fclean`. **make fclean will also get rid of any `.o` files** 
 
 
 
-> ## Resources ##
+
+## Resources ##
 For this project i used information from
-- [Gitbook posted by Laura] (`https://42-cursus.gitbook.io/guide/1-rank-01/ft_printf`)
+- [Gitbook posted by Laura](`https://42-cursus.gitbook.io/guide/1-rank-01/ft_printf`)
 Aswell as the Wikipedia page on the standard C library function printf from: `https://en.wikipedia.org/wiki/Printf`
 Aswell as AI to write the flow of my ft_printf down below.
 
@@ -27,7 +28,7 @@ Aswell as AI to write the flow of my ft_printf down below.
 
 ## Flow of ft_printf ##
 
-You call 
+You call:
 `ft_printf("Hello %s, number: %d, hex: %x\n", "world", 42, 42);`
 
 
