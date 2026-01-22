@@ -2,7 +2,7 @@
 
 
 ## Description ##
-GNL is a function that reads from a file descriptor and returns one line at a time.
+>GNL is a function that reads from a file descriptor and returns one line at a time.
 It continuously reads input in chunks of `BUFFER_SIZE` until a `newline character` or *`\n`* is found or when `EOF` (End-Of-File) is reached.
 When GNL encounters a newline character, the function extracts the line up to and including that newline character, and stores the remaining data for the next function call.
 So, on every new call to `get_next_line`, the function resumes reading from the remaining stored data and stops only when the EOF is reached and the buffer no longer contains any characters.
@@ -10,17 +10,48 @@ This GNL does **NOT** contain the bonus excercise
 
 
 ## Instructions ##
-The compiling will happen with the three standard flags, -Wall -Wextra -Werror and is typed as follows:
+>The compiling will happen with the three standard flags, -Wall -Wextra -Werror and is typed as follows:
 `cc -Werror -Wall -Wextra ./main.c ./get_next_line.c ./get_next_line_utils.c -D BUFFER_SIZE=4 -o test`
 After which it can be ran using **./test**.
 
 
 
 ## Resources ##
-For this project i used the information by LAnnur-s from the website Medium.
-`https://medium.com/@lannur-s/gnl-c3cff1ee552b`
+For this project i used the information by 
+- [LAnnur-s from the website Medium.](https://medium.com/@lannur-s/gnl-c3cff1ee552b)
 I also used valgrind and francinette for testing purposes, and to look for any memory leaks.
 Furthermore, i used AI to write the flow of my GNL down below, and i must admit, it did a pretty good job of explaining the flow of GNL.
+
+## GNL main code snippet ##
+```C
+char	*get_next_line(int fd)
+{
+	static char	*remainder;
+	char		*buffer;
+	ssize_t		bytes_read;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
+	bytes_read = 1;
+	while (bytes_read > 0 && (!remainder || !ft_strchr(remainder, '\n')))
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
+			return (free(buffer), free(remainder), remainder = NULL, NULL);
+		buffer[bytes_read] = '\0';
+		remainder = join_free(remainder, buffer);
+		if (!remainder)
+			return (free(buffer), remainder = NULL, NULL);
+	}
+	free(buffer);
+	if (!remainder || !*remainder)
+		return (free(remainder), remainder = NULL, NULL);
+	return (extract_line(&remainder));
+}
+```
 
 
 
