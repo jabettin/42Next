@@ -24,6 +24,62 @@ For this project i used information from
 Aswell as the Wikipedia page on the standard C library function printf from: `https://en.wikipedia.org/wiki/Printf`
 Aswell as AI to write the flow of my ft_printf down below.
 
+## Code snippet ##
+<ins> Makefile <ins>
+```Make
+NAME = libftprintf.a
+SRC = $(wildcard ft_printf.c conversions/*.c)
+OBJ = $(SRC:.c=.o)
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I.
+
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
+all: $(NAME)
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
+```
+
+<ins> Conversion handler <ins>
+```C
+#include "ft_printf.h"
+
+int	handle_conversion(char c, va_list args)
+{
+	int	count;
+
+	count = 0;
+	if (c == 'c')
+		count += print_char(va_arg(args, int));
+	else if (c == 's')
+		count += print_str(va_arg(args, char *));
+	else if (c == 'p')
+		count += print_pointer(va_arg(args, void *));
+	else if (c == 'd' || c == 'i')
+		count += print_decimal(va_arg(args, int));
+	else if (c == 'u')
+		count += print_unsigned(va_arg(args, unsigned int));
+	else if (c == 'x')
+		count += print_hex(va_arg(args, unsigned int), 0);
+	else if (c == 'X')
+		count += print_hex(va_arg(args, unsigned int), 1);
+	else if (c == '%')
+		count += write(1, "%", 1);
+	else
+		count += write(1, &c, 1);
+	return (count);
+}
+```
 
 
 ## Flow of ft_printf ##
