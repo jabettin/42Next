@@ -11,6 +11,7 @@ int main(void)
 	printf("size: %d\n", stack_size(a));
 
 	t_node	*temp = a;
+	sa(&temp);
 	while (temp)
 	{
 		printf("%d ", temp->value);
