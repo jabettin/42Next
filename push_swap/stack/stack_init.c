@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabettin <jabettin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 12:36:10 by jabettin          #+#    #+#             */
-/*   Updated: 2026/03/02 13:46:58 by jabettin         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:12:27 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ int	stack_size(t_node *stack)
 		count++;
 		stack = stack->next;
 	}
+	return (count);
 }
