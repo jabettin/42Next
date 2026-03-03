@@ -1,4 +1,4 @@
-NAME = push_swap.a
+NAME = push_swap
 SRCS = push_swap.c \
 		stack/stack_init.c
 OBJ = $(SRCS:.c=.o)
