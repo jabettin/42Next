@@ -9,6 +9,14 @@ int main(void)
 	add_back(&a, create_node(1));
 
 	printf("size: %d\n", stack_size(a));
+
+	t_node	*temp = a;
+	while (temp)
+	{
+		printf("%d ", temp->value);
+		temp = temp->next;
+	}
+	printf("\n");
 	free_stack(&a);
 	return 0;
 }
