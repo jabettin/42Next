@@ -6,7 +6,7 @@
 /*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 12:32:12 by jabettin          #+#    #+#             */
-/*   Updated: 2026/03/03 14:12:24 by jbetting         ###   ########.fr       */
+/*   Updated: 2026/03/03 14:50:11 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_node
 {
