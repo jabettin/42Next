@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabettin <jabettin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 12:32:12 by jabettin          #+#    #+#             */
-/*   Updated: 2026/03/02 13:46:04 by jabettin         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:15:58 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-#include <unistd.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
