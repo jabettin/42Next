@@ -2,14 +2,24 @@
 
 void	parse_args(int argc, char **argv, t_node **a)
 {
-	int	i;
+	int		i;
+	long	value;
+	t_node	*new_node;
 
-	i = 0;
+	i = 1;
 	if (argc < 1)
 		error_exit(a);
 	while (i < argc - 1)
 	{
-		
+		if (!atoi_strict(argv[i], &value))
+			error_exit(a);
+		if (is_duplicate(*a, (int)value))
+			error_exit(a);
+		new_node = create_node((int)value);
+		if(!new_node)
+			error_exit(a);
+		add_back(a, new_node);
+		i++;
 	}
 		
 }
