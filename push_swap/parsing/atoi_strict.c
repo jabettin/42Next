@@ -7,25 +7,25 @@ int	atoi_strict(const char *str, long *result)
 
 	i = 0;
 	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-	{
-		i++;
-	}
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign =-1;
 		i++;
 	}
+	if (!str[i])
+		return (0);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		*result = *result + (str[i] -'0');
-		if (*result * 10 >= INT_MAX)
-			return 0;
-		
-		if (*result / 10 <= INT_MIN)
-			return 0;
+		if (*result > (long)INT_MAX + 1)
+			return (0);
 		i++;
 	}
-	
+	if (str[i] != '\0')
+		return (0);
+	*result *= sign;
+	if (*result > INT_MAX || *result < INT_MIN)
+		return (0);
+	return (1);
 }
