@@ -6,7 +6,7 @@
 /*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 12:36:10 by jabettin          #+#    #+#             */
-/*   Updated: 2026/03/03 11:12:27 by jbetting         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:39:00 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,15 @@ int	stack_size(t_node *stack)
 		stack = stack->next;
 	}
 	return (count);
+}
+
+int	is_sorted(t_node *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
