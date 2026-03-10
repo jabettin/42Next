@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 			return ;
 		}
 	size = stack_size(&a);
-		
+	
 	free_stack(&a);
 	free_stack(&b);
 }
