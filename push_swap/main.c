@@ -4,25 +4,20 @@ int	main(int argc, char **argv)
 {
 	t_node	*a;
 	t_node	*b;
-	int		i;
-	int		result;
+	int		size;
 
-	i = 0;
+	a = NULL;
 	b = NULL;
 	if (argc == 1)
-		return ;
-	while (i < argc -1)
-	{
-		parse_args(argc, argv, &a);
-		if (is_sorted(a))
-		{
+		return (0);
+	parse_args(argc, argv, &a);
+	if (is_sorted(a))
+		{	
 			free_stack(&a);
 			return ;
 		}
-		result = stack_size(&a);
-		if (result == )
-		i++;
+	size = stack_size(&a);
 		
-	}
 	free_stack(&a);
+	free_stack(&b);
 }
