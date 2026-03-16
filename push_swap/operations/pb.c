@@ -7,7 +7,7 @@ void	pb(t_node **a, t_node **b)
 	if (!*a)
 		return ;
 	temp = *a;
-	(*a) = (*a)->next;
+	*a = (*a)->next;
 	temp->next = *b;
 	*b = temp;
 	write(1, "pb", 2);	
