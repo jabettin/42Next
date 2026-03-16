@@ -38,4 +38,3 @@ int	main(int argc, char **argv)
 	free_stack(&a);
 	free_stack(&b);
 }
-```C
