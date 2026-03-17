@@ -6,7 +6,7 @@
 /*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 12:32:12 by jabettin          #+#    #+#             */
-/*   Updated: 2026/03/10 14:43:35 by jbetting         ###   ########.fr       */
+/*   Updated: 2026/03/17 20:40:57 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	add_back(t_node **stack, t_node *new_node);
 void	free_stack(t_node **stack);
 int		stack_size(t_node *stack);
 void	sa(t_node **stack);
+void	pa(t_node **a, t_node **b);
+void	pb(t_node **a, t_node **b);
+void	ra(t_node **a);
+void	rb(t_node **b);
+void	rra(t_node **a);
 int		atoi_strict(const char *str, long *result);
 int		is_duplicate(t_node *stack, int value);
 void	parse_args(int argc, char **argv, t_node **a);
