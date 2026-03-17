@@ -10,7 +10,7 @@ void	ra(t_node **a)
 	temp = *a;
 	*a = (*a)->next;
 	last = *a;
-	while(last->next)
+	while (last->next)
 		last = last->next;
 	last->next = temp;
 	temp->next = NULL;

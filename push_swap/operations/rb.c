@@ -11,7 +11,7 @@ void	rb(t_node **b)
 	*b = (*b)->next;
 	last = *b;
 	while (last->next)
-		*b = (*b)->next;
+		last = last->next;
 	last->next = temp;
 	temp->next = NULL;
 	write(1, "rb", 2);
