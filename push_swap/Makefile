@@ -1,7 +1,9 @@
 NAME = push_swap
 SRCS = push_swap.c \
 		stack/stack_init.c \
-		parsing/parsing.c \
+		parsing/atoi_strict.c \
+		parsing/is_duplicate.c \
+		parsing/parse_args.c \
 		operations/sa.c \
 		operations/pb.c \
 		operations/pa.c \
@@ -9,8 +11,9 @@ SRCS = push_swap.c \
 		operations/rb.c \
 		operations/rra.c \
 		sorting/normalize.c \
-		sorting/sort_small.c \
-		sorting/radix_sort.c
+		sorting/sort_three.c \
+		sorting/sort_two.c \
+		sorting/radix.c
 OBJ = $(SRCS:.c=.o)
 
 CC = cc 
