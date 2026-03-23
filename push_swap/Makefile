@@ -13,7 +13,7 @@ SRCS = push_swap.c \
 		sorting/normalize.c \
 		sorting/sort_three.c \
 		sorting/sort_two.c \
-		sorting/radix.c
+		sorting/radix_sort.c
 OBJ = $(SRCS:.c=.o)
 
 CC = cc 
