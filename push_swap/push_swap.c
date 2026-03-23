@@ -1,23 +1,23 @@
 #include "push_swap.h"
-#include <stdio.h>
 
-int main(void)
+int	main(int argc, char **argv)
 {
-	t_node	*a = NULL;
-	add_back(&a, create_node(3));
-	add_back(&a, create_node(7));
-	add_back(&a, create_node(1));
+	t_node	*a;
+	t_node	*b;
+	int		size;
 
-	printf("size: %d\n", stack_size(a));
-
-	t_node	*temp = a;
-	sa(&temp);
-	while (temp)
-	{
-		printf("%d ", temp->value);
-		temp = temp->next;
-	}
-	printf("\n");
+	a = NULL;
+	b = NULL;
+	if (argc == 1)
+		return (0);
+	parse_args(argc, argv, &a);
+	if (is_sorted(a))
+		{	
+			free_stack(&a);
+			return ;
+		}
+	size = stack_size(&a);
+	
 	free_stack(&a);
-	return 0;
+	free_stack(&b);
 }
