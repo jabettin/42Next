@@ -7,7 +7,7 @@ void	rra(t_node **a)
 
 	if(!*a || !(*a)->next)
 		return ;
-		secondlast = *a;
+	secondlast = *a;
 	while (secondlast->next->next != NULL)
 		secondlast = secondlast->next;
 	last = secondlast->next;
