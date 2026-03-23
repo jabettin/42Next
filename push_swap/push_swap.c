@@ -12,13 +12,21 @@ int	main(int argc, char **argv)
 		return (0);
 	parse_args(argc, argv, &a);
 	if (is_sorted(a))
-		{	
-			free_stack(&a);
-			return ;
-		}
-	size = stack_size(&a);
-	
+	{
+		free_stack(&a);
+		return (0);
+	}
+	size = stack_size(a);
+	if (size == 2)
+		sort_two(&a);
+	else if (size == 3)
+		sort_three(&a);
+	else
+	{
+		normalize(a, size);
+		radix_sort(&a, &b, size);
+	}
 	free_stack(&a);
 	free_stack(&b);
-	return (1);
+	return (0);
 }
