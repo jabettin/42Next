@@ -1,5 +1,5 @@
 NAME = push_swap
-SRCS = SRCS = push_swap.c \
+SRCS = push_swap.c \
 		stack/stack_init.c \
 		parsing/parsing.c \
 		operations/sa.c \
