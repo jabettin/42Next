@@ -1,39 +1,69 @@
 #include "../push_swap.h"
 
-void	normalize(t_node *a, int size)
+static void	sort_array(int *arr, int size)
 {
-	t_node	*temp;
-	int		min;
-	int		i;
+	int	i;
+	int	j;
+	int	temp;
 
 	i = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
-		min = find_min(a);
-		temp = a;
-		while (temp)
+		j = i + 1;
+		while (j < size)
 		{
-			if (temp->value == min)
+			if (arr[i] > arr[j])
 			{
-				temp->value = i;
-				break ;
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
 			}
-			temp = temp->next;
+			j++;
 		}
 		i++;
 	}
 }
 
-int	find_min(t_node *a)
+static void	fill_sorted(t_node *a, int *sorted, int size)
 {
-	int	min;
+	t_node	*temp;
+	int		i;
 
-	min = a->value;
-	while (a)
+	temp = a;
+	i = 0;
+	while (temp)
 	{
-		if (a->value < min)
-			min = a->value;
-		a = a->next;
+		sorted[i] = temp->value;
+		temp = temp->next;
+		i++;
 	}
-	return (min);
+	sort_array(sorted, size);
+}
+
+void	normalize(t_node *a, int size)
+{
+	int		*sorted;
+	t_node	*temp;
+	int		i;
+
+	sorted = malloc(sizeof(int) * size);
+	if (!sorted)
+		return ;
+	fill_sorted(a, sorted, size);
+	temp = a;
+	while (temp)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (temp->value == sorted[i])
+			{
+				temp->value = i;
+				break ;
+			}
+			i++;
+		}
+		temp = temp->next;
+	}
+	free(sorted);
 }
