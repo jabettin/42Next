@@ -6,7 +6,7 @@
 /*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 12:32:12 by jabettin          #+#    #+#             */
-/*   Updated: 2026/03/23 14:12:56 by jbetting         ###   ########.fr       */
+/*   Updated: 2026/03/23 14:13:46 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	add_back(t_node **stack, t_node *new_node);
 void	free_stack(t_node **stack);
 int		stack_size(t_node *stack);
 int		is_sorted(t_node *stack);
-int		find_min(t_node *stack);
 
 // parsing
 int		atoi_strict(const char *str, long *result);
