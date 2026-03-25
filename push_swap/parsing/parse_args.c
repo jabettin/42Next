@@ -7,9 +7,9 @@ void	parse_args(int argc, char **argv, t_node **a)
 	t_node	*new_node;
 
 	i = 1;
-	if (argc < 1)
+	if (argc < 2)
 		error_exit(a);
-	while (i < argc - 1)
+	while (i < argc)
 	{
 		if (!atoi_strict(argv[i], &value))
 			error_exit(a);

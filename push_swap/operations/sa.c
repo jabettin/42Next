@@ -13,4 +13,5 @@ void	sa(t_node **stack)
 	first->next = second->next;
 	second->next = first;
 	*stack = second;
+	write(1, "sa\n", 3);
 }

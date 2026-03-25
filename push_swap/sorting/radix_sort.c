@@ -8,7 +8,7 @@ void	radix_sort(t_node **a, t_node **b, int size)
 
 	tbits = 0;
 	bit = 0;
-	while ((1 << tbits <= size))
+	while ((1 << tbits) <= size)
 		tbits++;
 	while (bit < tbits)
 	{

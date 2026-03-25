@@ -7,6 +7,7 @@ int	atoi_strict(const char *str, long *result)
 
 	i = 0;
 	sign = 1;
+	*result = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -17,7 +18,7 @@ int	atoi_strict(const char *str, long *result)
 		return (0);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		*result = *result + (str[i] -'0');
+		*result = *result * 10 + (str[i] -'0');
 		if (*result > (long)INT_MAX + 1)
 			return (0);
 		i++;
