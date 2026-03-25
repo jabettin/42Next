@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 		sort_three(&a);
 	else
 	{
-		normalize(a, size);
+		normalize(a);
 		radix_sort(&a, &b, size);
 	}
 	free_stack(&a);

@@ -1,69 +1,23 @@
 #include "../push_swap.h"
 
-static void	sort_array(int *arr, int size)
+void	normalize(t_node *a)
 {
-	int	i;
-	int	j;
-	int	temp;
+	t_node	*current;
+	t_node	*scanner;
+	int		rank;
 
-	i = 0;
-	while (i < size - 1)
+	current = a;
+	while (current != NULL)
 	{
-		j = i + 1;
-		while (j < size)
+		rank = 0;
+		scanner = a;
+		while (scanner != NULL)
 		{
-			if (arr[i] > arr[j])
-			{
-				temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-			}
-			j++;
+			if (scanner->value < current->value)
+				rank++;
+			scanner = scanner->next;
 		}
-		i++;
+		current->value = rank;
+		current = current->next;
 	}
-}
-
-static void	fill_sorted(t_node *a, int *sorted, int size)
-{
-	t_node	*temp;
-	int		i;
-
-	temp = a;
-	i = 0;
-	while (temp)
-	{
-		sorted[i] = temp->value;
-		temp = temp->next;
-		i++;
-	}
-	sort_array(sorted, size);
-}
-
-void	normalize(t_node *a, int size)
-{
-	int		*sorted;
-	t_node	*temp;
-	int		i;
-
-	sorted = malloc(sizeof(int) * size);
-	if (!sorted)
-		return ;
-	fill_sorted(a, sorted, size);
-	temp = a;
-	while (temp)
-	{
-		i = 0;
-		while (i < size)
-		{
-			if (temp->value == sorted[i])
-			{
-				temp->value = i;
-				break ;
-			}
-			i++;
-		}
-		temp = temp->next;
-	}
-	free(sorted);
 }
