@@ -20,14 +20,14 @@ OBJ = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I.
 
+all: $(NAME)
+
 $(LIBFT):
 	$(MAKE) -C libft
 
 $(NAME): $(LIBFT) $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 	chmod +x $(NAME)
-
-all: $(NAME)
 
 clean:
 	rm -f $(OBJ)
