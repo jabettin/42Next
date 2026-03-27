@@ -24,6 +24,10 @@ To verify correctness using the provided checker binary:
 ```
 ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
 ```
+To test the amount of operations needed for 100 numbers:
+```
+ARG=$(python3 -c "import random; nums = random.sample(range(-1000, 1000), 100); print(' '.join(map(str, nums)))"); ./push_swap $ARG | wc -l
+```
 
 To get rid of the `.o` files after having used `make`, you can write: `make clean` — this removes all `.o` files but leaves the **push_swap** binary.
 
