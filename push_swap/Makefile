@@ -14,6 +14,8 @@ SRCS = push_swap.c \
 		sorting/normalize.c \
 		sorting/sort_three.c \
 		sorting/sort_two.c \
+		sorting/sort_four.c \
+		sorting/sort_five.c \
 		sorting/radix_sort.c
 OBJ = $(SRCS:.c=.o)
 

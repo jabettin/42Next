@@ -26,9 +26,13 @@ static void	sort(t_node **a, t_node **b)
 		sort_two(a);
 	else if (size == 3)
 		sort_three(a);
+	else if (size == 4)
+		sort_four(a, b);
+	else if (size == 5)
+		sort_five(a, b, size);
 	else
 	{
-		normalize(*a);
+		normalize(*a, size);
 		radix_sort(a, b, size);
 	}
 }

@@ -45,8 +45,10 @@ void	rb(t_node **b);
 void	rra(t_node **a);
 
 // sorting
-void	normalize(t_node *a);
+void	normalize(t_node *a, int size);
 void	sort_two(t_node **a);
 void	sort_three(t_node **a);
+void	sort_four(t_node **a, t_node **b);
+void	sort_five(t_node **a, t_node **b, int size);
 void	radix_sort(t_node **a, t_node **b, int size);
 #endif
