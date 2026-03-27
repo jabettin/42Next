@@ -13,7 +13,7 @@ void	normalize(t_node *a)
 		scanner = a;
 		while (scanner != NULL)
 		{
-			if (scanner->value < current->value)
+			if (current->value > scanner->value)
 				rank++;
 			scanner = scanner->next;
 		}
