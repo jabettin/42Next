@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabettin <jabettin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:52:25 by jabettin          #+#    #+#             */
-/*   Updated: 2025/11/02 14:06:01 by jabettin         ###   ########.fr       */
+/*   Updated: 2026/03/27 18:28:26 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 int	ft_atoi(const char *nptr)
