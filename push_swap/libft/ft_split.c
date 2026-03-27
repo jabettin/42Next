@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabettin <jabettin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 03:37:11 by jbetting          #+#    #+#             */
-/*   Updated: 2026/03/25 18:17:24 by jabettin         ###   ########.fr       */
+/*   Updated: 2025/10/29 03:59:18 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,4 @@ char	**ft_split(const char *s, char c)
 	}
 	result[i] = NULL;
 	return (result);
-	free(result);
 }
