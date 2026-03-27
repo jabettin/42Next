@@ -1,4 +1,5 @@
 NAME = push_swap
+LIBFT = libft/libft.a
 SRCS = push_swap.c \
 		stack/stack_init.c \
 		parsing/atoi_strict.c \
@@ -16,19 +17,25 @@ SRCS = push_swap.c \
 		sorting/radix_sort.c
 OBJ = $(SRCS:.c=.o)
 
-CC = cc 
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -I.
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+
+$(LIBFT):
+	$(MAKE) -C libft
+
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 	chmod +x $(NAME)
 
 all: $(NAME)
 
 clean:
 	rm -f $(OBJ)
+	$(MAKE) -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C libft fclean
 
 re: fclean all
 
