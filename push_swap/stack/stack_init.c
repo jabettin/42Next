@@ -6,18 +6,18 @@
 /*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 12:36:10 by jabettin          #+#    #+#             */
-/*   Updated: 2026/03/09 15:39:00 by jbetting         ###   ########.fr       */
+/*   Updated: 2026/03/27 17:52:38 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../push_swap.h"
 
 t_node	*create_node(int value)
 {
 	t_node	*new_node;
+
 	new_node = malloc(sizeof(t_node));
-	if(!new_node)
+	if (!new_node)
 		return (NULL);
 	new_node->value = value;
 	new_node->next = NULL;

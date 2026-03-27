@@ -6,7 +6,7 @@
 /*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 12:32:12 by jabettin          #+#    #+#             */
-/*   Updated: 2026/03/25 13:37:19 by jbetting         ###   ########.fr       */
+/*   Updated: 2026/03/27 17:53:22 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_node
 {
 	int				value;
-	struct	s_node	*next;
+	struct s_node	*next;
 }	t_node;
 
 // stack

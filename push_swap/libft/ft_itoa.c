@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jabettin <jabettin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jbetting <jbetting@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:46:48 by jabettin          #+#    #+#             */
-/*   Updated: 2025/11/02 19:25:00 by jabettin         ###   ########.fr       */
+/*   Updated: 2026/03/27 17:46:55 by jbetting         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 
 static	int	count_len(int n)
 {
@@ -72,15 +68,4 @@ char	*ft_itoa(int n)
 	ft_putnbr(num, str, &i);
 	str[i] = '\0';
 	return (str);
-}
-
-int main(void)
-{
-	int i = -7 / 10;
-	printf("SizeOf:_%d\n", i);
-
-	// printf("%p\n", node1);
-
-	// printf("%zu\n",i);
-	return (0);
 }
