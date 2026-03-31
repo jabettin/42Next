@@ -41,7 +41,7 @@ For this project I used information from:
 - [push_swap — Medium overview by various 42 students](https://medium.com/search?q=push_swap)
 - [Sorting Algorithms — GeeksforGeeks](https://www.geeksforgeeks.org/sorting-algorithms/)
 
-As well as AI (Claude) to help debug parsing issues, explain bitwise operations used in radix sort, trace through algorithm execution step by step, and explain the logic of normalize and radix sort in plain language.
+As well as AI to parse through the entire program, make tests and explain bitwise operations
 
 ## Code snippet ##
 
