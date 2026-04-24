@@ -1,13 +1,13 @@
 class plant(self, name, height, age):
-	self.name(print"{name}")
-	self.height(print"{height}")
-	self.age(print"{age}")
+	self.name
+	self.height
+	self.age
 
 
-def ft_garden_intro():
-print(f"name = {name}")
-print(f"height = {height}")
-print(f"age = {age}")
+def ft_garden_intro(plant):
+	print(f"name = {plant.name}")
+	print(f"height = {plant.height}")
+	print(f"age = {plant.age}")
 
 
 
