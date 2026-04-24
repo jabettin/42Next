@@ -5,7 +5,9 @@ class plant(self, name, height, age):
 
 
 def ft_garden_intro():
-
+print(f"name = {name}")
+print(f"height = {height}")
+print(f"age = {age}")
 
 
 
