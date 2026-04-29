@@ -6,19 +6,20 @@ class Plant:
         self.initial_age = initial_age
     def show(self) -> None:
         print(f"Created: {self.name}: {self.initial_height}cm, {self.initial_age} days old")
+    def grow(self) -> None:
+        self.initial_height += 0.8
 
 if __name__ == '__main__':
-    rose = Plant("Rose", 25.0, 21)
-    sunflower = Plant("Sunflower", 44.3, 19)
-    cactus = Plant("Cactus", 33.1, 30)
-    lilly = Plant("Lilly", 13, 18)
-    poppy = Plant("Poppy", 15, 24)
+    plants = {
+        "Rose": Plant("Rose", 25.0, 21),
+        "Sunflower": Plant("Sunflower", 44.3, 19),
+        "Cactus": Plant("Cactus", 33.1, 30),
+        "Lilly": Plant("Lilly", 13.5, 18),
+        "Poppy": Plant("Poppy", 15.2, 24),
+    }
     print("=== Plant Factory Output ===")
-    rose.show()
-    sunflower.show()
-    cactus.show()
-    lilly.show()
-    poppy.show()
+    for plant in plants.values():
+        plant.show()
 
 
 
