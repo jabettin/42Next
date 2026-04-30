@@ -1,0 +1,4 @@
+        if self.__new_age > 0: How do i make this work?
+
+	what is the self pointer again? is self.name equal to : jacob = {name: 'Jacob'}
+	
