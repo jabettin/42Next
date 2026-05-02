@@ -10,13 +10,13 @@ class Plant:
     def show(self):
         print(f"Plant created: {self.name}: {self.__height}cm, {self.__age} days old")
     def set_age(self) -> int:
-        self.__new_age = input()
+        self.__new_age = int(input())
         if self.__new_age > 0:
             self.__age = self.__new_age
         else:
             print("Age has to be a positive int")
     def set_height(self, __height) -> float:
-        self.__new_height = input()
+        self.__new_height = float(input())
         self.__height = self.__new_height
 
 
