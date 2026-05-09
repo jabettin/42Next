@@ -72,7 +72,24 @@ class Tree(Plant):
 
 
 class Vegetable(Plant):
-    
+    def __init__(self, name: str, height: float, age: int, harvest: str, nutrition: int) -> None:
+        super().__init__(name, height, age)
+        self._harvest = harvest
+        self._nutrition = 0
+
+    def show(self) -> None:
+        super().show()
+        print(f"Harvest season: {self._harvest}")
+        print(f"Nutritional value: {self._nutrition}")
+
+    def grow(self) -> None:
+        print(f"make {self._name.lower()} grow and age for 20 days")
+        self._height = self._height + 42
+        self._age = self._age + 20
+        self._nutrition = self._nutrition + 20
+
+
+
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
     print("=== Flower")
@@ -87,3 +104,7 @@ if __name__ == "__main__":
     oak.produce_shade()
     print()
     print("=== Vegetable")
+    tomato = Vegetable("Tomato", 5, 10, "April", 0)
+    tomato.show()
+    tomato.grow()
+    tomato.show()
