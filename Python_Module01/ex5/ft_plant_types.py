@@ -49,7 +49,7 @@ class Flower(Plant):
         if self._bloomed:
             print(f"{self._name} is blooming beautifully!")
         else:
-            print(f"{self._name} has not bloomed yet.")
+            print(f"{self._name} has not bloomed yet")
 
 
     def bloom(self) -> None:
@@ -88,6 +88,7 @@ class Vegetable(Plant):
 
     def age(self) -> None:
         self._age += 1
+        self._nutrition += 1
 
 
 
@@ -108,7 +109,7 @@ if __name__ == "__main__":
     tomato = Vegetable("Tomato", 5, 10, "April")
     tomato.show()
     print("[make tomato grow and age for 20 days]")
-    for x in range(20):
+    for _ in range(20):
         tomato.grow()
         tomato.age()
     tomato.show()
