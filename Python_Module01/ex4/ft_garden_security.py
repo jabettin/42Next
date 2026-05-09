@@ -1,30 +1,46 @@
 #!/usr/bin/env python3
 class Plant:
     name: str
-    height: float
-    age: int
+    _height: float
+    _age: int
+
     def __init__(self, name: str, height: float, age: int) -> None:
         self.name = name
-        self.__height = height
-        self.__age = age
-    def show(self):
-        print(f"Plant created: {self.name}: {self.__height}cm, {self.__age} days old")
-    def set_age(self) -> int:
-        self.__new_age = int(input())
-        if self.__new_age > 0:
-            self.__age = self.__new_age
+        self._height = height
+        self._age = age
+
+    def show(self) -> None:
+        print(f"Plant created: {self.name}: {self._height}cm, {self._age} days old")
+
+    def get_height(self) -> float:
+        return self._height
+
+    def get_age(self) -> int:
+        return self._age
+
+    def set_height(self, height: float) -> None:
+        if height < 0:
+            print(f"{self.name}: Error, height can't be negative")
+            print("Height update rejected")
         else:
-            print("Age has to be a positive int")
-    def set_height(self, __height) -> float:
-        self.__new_height = float(input())
-        self.__height = self.__new_height
+            self._height = float(height)
+            print(f"Height updated: {height}cm")
 
-
+    def set_age(self, age: int) -> None:
+        if age < 0:
+            print(f"{self.name}: Error, age can't be negative")
+            print("Age update rejected")
+        else:
+            self._age = age
+            print(f"Age updated: {age} days")
 
 
 if __name__ == '__main__':
     print("=== Garden Security System ===")
-    rose = Plant("rose", 25.5, 20)
+    rose = Plant("Rose", 15.0, 10)
     rose.show()
-    rose.set_age()
-    rose.show()
+    rose.set_height(25)
+    rose.set_age(30)
+    rose.set_height(-5)
+    rose.set_age(-1)
+    print(f"Current state: {rose.name}: {rose.get_height()}cm, {rose.get_age()} days old")
