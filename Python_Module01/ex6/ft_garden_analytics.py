@@ -136,7 +136,7 @@ def display_stats(plant) -> None:
 
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
-    sunflower = Seed("Sunflower", 85.0, 45, "Yellow", 42)
+    sunflower = Seed("Sunflower", 80.0, 45, "Yellow", 42)
     oak = Tree("Oak", 200, 366, 5.0)
     rose = Flower("Rose", 15.0, 10, "Red")
 
