@@ -5,6 +5,7 @@ class Plant:
             self._grow = 0
             self._age = 0
             self._show = 0
+
         def display(self) -> None:
             print(f"Stats: {self._grow} grow, {self._age} age, {self._show} show")
 
@@ -17,6 +18,8 @@ class Plant:
         self._height = height
         self._age = age
         self._stats = self.__class__._Stats()
+
+    
 
     @staticmethod
     def more_than_a_year(age: int) -> bool:
@@ -82,10 +85,6 @@ class Flower(Plant):
         print(f"[asking the {self._name.lower()} to bloom]")
         self._bloomed = True
 
-    def display(self) -> None:
-        super().display()
-
-
 class Tree(Plant):
     class _Stats(Plant._Stats):
         def __init__(self):
@@ -116,25 +115,32 @@ class Seed(Flower):
 
     def show(self) -> None:
         super().show()
-        print(f"Seeds: {self._seeds}")
+        if self._bloomed:
+            print(f"Seeds: {self._seeds}")
+        else:
+            print("Seeds: 0")
 
     def bloom(self) -> bool:
        super().bloom()
 
+def display_stats(plant) -> None:
+    print(f"[statistics for {plant._name}]")
+    plant._stats.display()
+
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
-    sunflower = Seed("Sunflower", 85.0, 45, "Yellow", 0)
-    oak = Tree("Oak", 200, 365, 5.0)
+    sunflower = Seed("Sunflower", 85.0, 45, "Yellow", 42)
+    oak = Tree("Oak", 200, 366, 5.0)
     rose = Flower("Rose", 20, 15, "blue")
 
     print("=== Check year-old")
-    print(rose.more_than_a_year(30))
-    print(oak.more_than_a_year(365))
+    print(f"Is {rose.get_age()} days more than a year? -> {Plant.more_than_a_year(rose.get_age())}")
+    print(f"Is {oak.get_age()} days more than a year? -> {Tree.more_than_a_year(oak.get_age())}")
     print("=== Flower")
     
     rose.show()
     rose.bloom()
-    rose.display()
+    display_stats(rose)
     rose.show()
     print()
     print("=== Tree")
