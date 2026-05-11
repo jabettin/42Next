@@ -138,7 +138,7 @@ if __name__ == "__main__":
     print("=== Garden Plant Types ===")
     sunflower = Seed("Sunflower", 85.0, 45, "Yellow", 42)
     oak = Tree("Oak", 200, 366, 5.0)
-    rose = Flower("Rose", 20, 15, "blue")
+    rose = Flower("Rose", 15.0, 10, "Red")
 
     print("=== Check year-old")
     print(f"Is {rose.get_age()} days more than a year? -> {Plant.more_than_a_year(rose.get_age())}")
@@ -150,8 +150,8 @@ if __name__ == "__main__":
     rose.describe_actions(grew=True, bloomed=True)
     rose.bloom()
     rose.grow(8)
-    display_stats(rose)
     rose.show()
+    display_stats(rose)
     print()
 
     print("=== Tree")
