@@ -118,12 +118,3 @@ if __name__ == "__main__":
     oak.show()
     oak.produce_shade()
     print()
-    print("=== Vegetable")
-    tomato = Vegetable("Tomato", 5, 10, "April")
-    tomato.show()
-    print("[make tomato grow and age for 20 days]")
-    for _ in range(20):
-        tomato.grow()
-        tomato.age()
-    tomato.show()
-    tomato.age(20)
