@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 class Plant:
-    def __init__(self, name: str, initial_height: float, initial_age: int) -> None:
+    def __init__(
+        self, name: str, initial_height: float, initial_age: int
+    ) -> None:
         self.name = name
         self.initial_height = initial_height
         self.initial_age = initial_age
+
     def show(self) -> None:
-        print(f"Created: {self.name}: {self.initial_height}cm, {self.initial_age} days old")
+        print(f"Created: {self.name}: {self.initial_height}cm, "
+              f"{self.initial_age} days old")
+
     def grow(self) -> None:
         self.initial_height += 0.8
+
 
 if __name__ == '__main__':
     plants = {
@@ -20,7 +26,3 @@ if __name__ == '__main__':
     print("=== Plant Factory Output ===")
     for plant in plants.values():
         plant.show()
-
-
-
-

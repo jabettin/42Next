@@ -37,6 +37,7 @@ class Plant:
             self._age = age
             print(f"Age updated: {age} days")
 
+
 class Flower(Plant):
     def __init__(self, name: str, height: float, age: int, color: str) -> None:
         super().__init__(name, height, age)
@@ -51,13 +52,15 @@ class Flower(Plant):
         else:
             print(f"{self._name} has not bloomed yet")
 
-
     def bloom(self) -> None:
         print(f"[asking the {self._name.lower()} to bloom]")
         self._bloomed = True
 
+
 class Tree(Plant):
-    def __init__(self, name: str, height: float, age: int, diameter: float) -> None:
+    def __init__(
+        self, name: str, height: float, age: int, diameter: float
+    ) -> None:
         super().__init__(name, height, age)
         self._diameter = diameter
 
@@ -67,12 +70,14 @@ class Tree(Plant):
 
     def produce_shade(self) -> None:
         print(f"[asking the {self._name.lower()} to produce shade]")
-        print(f"Tree {self._name} now produces a shade of {self._height}cm long and {self._diameter}cm wide.")
-
+        print(f"Tree {self._name} now produces a shade of "
+              f"{self._height}cm long and {self._diameter}cm wide.")
 
 
 class Vegetable(Plant):
-    def __init__(self, name: str, height: float, age: int, harvest: str) -> None:
+    def __init__(
+        self, name: str, height: float, age: int, harvest: str
+    ) -> None:
         super().__init__(name, height, age)
         self._harvest = harvest
         self._nutrition = 0
@@ -89,7 +94,6 @@ class Vegetable(Plant):
     def age(self) -> None:
         self._age += 1
         self._nutrition += 1
-
 
 
 if __name__ == "__main__":
