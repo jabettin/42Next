@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 class Plant:
+    class _Stats:
+        def __init__(self):
+            self._grow = 0
+            self._age = 0
+            self._show = 0
+        def display(self) -> None:
+            print(f"Stats: {self._grow} grow, {self._age} age, {self._show} show")
+
     _name: str
     _height: float
     _age: int
@@ -9,27 +17,20 @@ class Plant:
         self._height = height
         self._age = age
         self._stats = self.__class__._Stats()
-    class _Stats:
-        def __init__(self):
-            self._grow = 0
-            self._age = 0
-            self._show = 0
-
-        def display(self) -> None:
-            print(f"Stats: {self._grow} grow, {self._age} age, {self._show} show")
 
     @staticmethod
-    def more_than_year(age: int) -> bool:
+    def more_than_a_year(age: int) -> bool:
         return age >= 365
 
     @classmethod
     def anonymous(cls):
         return cls("Unknown plant", 0.0, 0)
+
     def show(self) -> None:
         print(f"{self._name}: {self._height}cm, {self._age} days old")
-        self._Stats._show += 1
+        self._stats._show += 1
 
-    def grow(self, amount: float = 0.8) -> None:
+    def grow(self, amount: float = 8.0) -> None:
         self._height = round(self._height + amount, 1)
         self._stats._grow += 1
 
@@ -62,6 +63,7 @@ class Plant:
             self._age = age
             print(f"Age updated: {age} days")
 
+
 class Flower(Plant):
     def __init__(self, name: str, height: float, age: int, color: str) -> None:
         super().__init__(name, height, age)
@@ -76,10 +78,13 @@ class Flower(Plant):
         else:
             print(f"{self._name} has not bloomed yet")
 
-
-    def bloom(self) -> None:
+    def bloom(self) -> bool:
         print(f"[asking the {self._name.lower()} to bloom]")
         self._bloomed = True
+
+    def display(self) -> None:
+        super().display()
+
 
 class Tree(Plant):
     class _Stats(Plant._Stats):
@@ -112,19 +117,32 @@ class Seed(Flower):
     def show(self) -> None:
         super().show()
         print(f"Seeds: {self._seeds}")
-        
 
+    def bloom(self) -> bool:
+       super().bloom()
 
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
-    print("=== Flower")
+    sunflower = Seed("Sunflower", 85.0, 45, "Yellow", 0)
+    oak = Tree("Oak", 200, 365, 5.0)
     rose = Flower("Rose", 20, 15, "blue")
+
+    print("=== Check year-old")
+    print(rose.more_than_a_year(30))
+    print(oak.more_than_a_year(365))
+    print("=== Flower")
+    
     rose.show()
     rose.bloom()
+    rose.display()
     rose.show()
     print()
     print("=== Tree")
-    oak = Tree("Oak", 200, 365, 5.0)
+    
     oak.show()
     oak.produce_shade()
     print()
+    print("=== Seed")
+    sunflower.show()
+    sunflower.bloom()
+    sunflower.show()
