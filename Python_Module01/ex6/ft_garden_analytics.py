@@ -7,7 +7,8 @@ class Plant:
             self._show = 0
 
         def display(self) -> None:
-            print(f"Stats: {self._grow} grow, {self._age} age, {self._show} show")
+            print(f"Stats: {self._grow} grow, "
+                  f"{self._age} age, {self._show} show")
 
     _name: str
     _height: float
@@ -19,7 +20,11 @@ class Plant:
         self._age = age
         self._stats = self.__class__._Stats()
 
-    def describe_actions(self, grew: bool = False, aged: bool = False, bloomed: bool = False) -> None:
+    def describe_actions(self,
+                        grew: bool = False,
+                        aged: bool = False,
+                        bloomed: bool = False
+                        ) -> None:
         actions = []
         if grew:
             actions.append("grow")
