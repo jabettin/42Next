@@ -163,7 +163,7 @@ if __name__ == "__main__":
 
     print("=== Seed")
     sunflower.show()
-    rose.describe_actions(grew=True, bloomed=True, aged=True)
+    sunflower.describe_actions(grew=True, bloomed=True, aged=True)
     sunflower.grow(30)
     sunflower.age(20)
     sunflower.bloom()
