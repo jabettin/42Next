@@ -20,11 +20,12 @@ class Plant:
         self._age = age
         self._stats = self.__class__._Stats()
 
-    def describe_actions(self,
-                        grew: bool = False,
-                        aged: bool = False,
-                        bloomed: bool = False
-                        ) -> None:
+    def describe_actions(
+        self,
+        grew: bool = False,
+        aged: bool = False,
+        bloomed: bool = False,
+    ) -> None:
         actions = []
         if grew:
             actions.append("grow")
@@ -108,10 +109,12 @@ class Tree(Plant):
             super().display()
             print(f"{self._shade} shade")
 
-    def __init__(self, name: str, height: float, age: int, diameter: float) -> None:
+    def __init__(
+        self, name: str, height: float, age: int, diameter: float
+    ) -> None:
         super().__init__(name, height, age)
         self._diameter = diameter
-        self._stats = Tree._Stats()
+        self._stats: Tree._Stats = Tree._Stats()
 
     def show(self) -> None:
         super().show()
@@ -119,12 +122,15 @@ class Tree(Plant):
 
     def produce_shade(self) -> None:
         print(f"[asking the {self._name.lower()} to produce shade]")
-        print(f"Tree {self._name} now produces a shade of {self._height}cm long and {self._diameter}cm wide.")
+        print(f"Tree {self._name} now produces a shade of "
+              f"{self._height}cm long and {self._diameter}cm wide.")
         self._stats._shade += 1
 
 
 class Seed(Flower):
-    def __init__(self, name: str, height: float, age: int, color: str, seeds: int) -> None:
+    def __init__(
+        self, name: str, height: float, age: int, color: str, seeds: int
+    ) -> None:
         super().__init__(name, height, age, color)
         self._seeds = seeds
 
@@ -152,8 +158,10 @@ if __name__ == "__main__":
     unknown = Plant.anonymous()
 
     print("=== Check year-old")
-    print(f"Is {rose.get_age()} days more than a year? -> {Plant.more_than_a_year(rose.get_age())}")
-    print(f"Is {oak.get_age()} days more than a year? -> {Tree.more_than_a_year(oak.get_age())}")
+    print(f"Is {rose.get_age()} days more than a year? "
+          f"-> {Plant.more_than_a_year(rose.get_age())}")
+    print(f"Is {oak.get_age()} days more than a year? "
+          f"-> {Tree.more_than_a_year(oak.get_age())}")
 
     print("=== Flower")
     rose.show()
