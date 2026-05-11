@@ -12,6 +12,12 @@ class Plant:
     def show(self) -> None:
         print(f"{self._name}: {self._height}cm, {self._age} days old")
 
+    def grow(self, amount: float = 0.8) -> None:
+        self._height = round(self._height + amount, 1)
+
+    def age(self, days: int = 1) -> None:
+        self._age += days
+
     def get_height(self) -> float:
         return self._height
 
@@ -92,3 +98,4 @@ if __name__ == "__main__":
         tomato.grow()
         tomato.age()
     tomato.show()
+    tomato.age(20)
