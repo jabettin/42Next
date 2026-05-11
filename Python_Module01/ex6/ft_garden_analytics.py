@@ -107,10 +107,11 @@ class Tree(Plant):
 class Seed(Flower):
     def __init__(self, name: str, height: float, age: int, color: str, seeds: int) -> None:
         super().__init__(name, height, age, color)
-        self._seed = seeds
+        self._seeds = seeds
 
     def show(self) -> None:
         super().show()
+        print(f"Seeds: {self._seeds}")
         
 
 
