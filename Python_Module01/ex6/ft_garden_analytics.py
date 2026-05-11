@@ -89,8 +89,9 @@ class Flower(Plant):
         else:
             print(f"{self._name} has not bloomed yet")
 
-    def bloom(self) -> bool:
+    def bloom(self) -> None:
         self._bloomed = True
+
 
 class Tree(Plant):
     class _Stats(Plant._Stats):
@@ -105,6 +106,7 @@ class Tree(Plant):
     def __init__(self, name: str, height: float, age: int, diameter: float) -> None:
         super().__init__(name, height, age)
         self._diameter = diameter
+        self._stats = Tree._Stats()
 
     def show(self) -> None:
         super().show()
@@ -114,6 +116,7 @@ class Tree(Plant):
         print(f"[asking the {self._name.lower()} to produce shade]")
         print(f"Tree {self._name} now produces a shade of {self._height}cm long and {self._diameter}cm wide.")
         self._stats._shade += 1
+
 
 class Seed(Flower):
     def __init__(self, name: str, height: float, age: int, color: str, seeds: int) -> None:
@@ -128,11 +131,13 @@ class Seed(Flower):
             print("Seeds: 0")
 
     def bloom(self) -> None:
-       super().bloom()
+        super().bloom()
+
 
 def display_stats(plant) -> None:
     print(f"[statistics for {plant._name}]")
     plant._stats.display()
+
 
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
