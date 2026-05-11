@@ -19,7 +19,15 @@ class Plant:
         self._age = age
         self._stats = self.__class__._Stats()
 
-    
+    def describe_actions(self, grew: bool = False, aged: bool = False, bloomed: bool = False) -> None:
+        actions = []
+        if grew:
+            actions.append("grow")
+        if aged:
+            actions.append("age")
+        if bloomed:
+            actions.append("bloom")
+        print(f"[asking the {self._name.lower()} to {' and '.join(actions)}]")
 
     @staticmethod
     def more_than_a_year(age: int) -> bool:
@@ -82,7 +90,6 @@ class Flower(Plant):
             print(f"{self._name} has not bloomed yet")
 
     def bloom(self) -> bool:
-        print(f"[asking the {self._name.lower()} to bloom]")
         self._bloomed = True
 
 class Tree(Plant):
@@ -120,7 +127,7 @@ class Seed(Flower):
         else:
             print("Seeds: 0")
 
-    def bloom(self) -> bool:
+    def bloom(self) -> None:
        super().bloom()
 
 def display_stats(plant) -> None:
@@ -136,19 +143,29 @@ if __name__ == "__main__":
     print("=== Check year-old")
     print(f"Is {rose.get_age()} days more than a year? -> {Plant.more_than_a_year(rose.get_age())}")
     print(f"Is {oak.get_age()} days more than a year? -> {Tree.more_than_a_year(oak.get_age())}")
+
     print("=== Flower")
-    
     rose.show()
+    display_stats(rose)
+    rose.describe_actions(grew=True, bloomed=True)
     rose.bloom()
+    rose.grow(8)
     display_stats(rose)
     rose.show()
     print()
+
     print("=== Tree")
-    
     oak.show()
+    display_stats(oak)
     oak.produce_shade()
+    display_stats(oak)
     print()
+
     print("=== Seed")
     sunflower.show()
+    rose.describe_actions(grew=True, bloomed=True, aged=True)
+    sunflower.grow(30)
+    sunflower.age(20)
     sunflower.bloom()
     sunflower.show()
+    display_stats(sunflower)
