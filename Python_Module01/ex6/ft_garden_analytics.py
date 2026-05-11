@@ -137,8 +137,9 @@ def display_stats(plant) -> None:
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
     sunflower = Seed("Sunflower", 80.0, 45, "Yellow", 42)
-    oak = Tree("Oak", 200, 366, 5.0)
+    oak = Tree("Oak", 200.0, 365, 5.0)
     rose = Flower("Rose", 15.0, 10, "Red")
+    unknown = Plant.anonymous()
 
     print("=== Check year-old")
     print(f"Is {rose.get_age()} days more than a year? -> {Plant.more_than_a_year(rose.get_age())}")
@@ -169,3 +170,8 @@ if __name__ == "__main__":
     sunflower.bloom()
     sunflower.show()
     display_stats(sunflower)
+    print()
+
+    print("=== Anonymous")
+    unknown.show()
+    display_stats(unknown)
