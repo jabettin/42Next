@@ -2,7 +2,7 @@
 >
 >They tend to get updated often
 >
->Per ex3/ft_plant_factory.py note to **not** include the json, and just copy the json contents into main as follows:
+>Per ex3/ft_plant_factory.py note to **_not_** include the json, and just copy the json contents into main as follows:
 
 ```python
 if __name__ == '__main__':
