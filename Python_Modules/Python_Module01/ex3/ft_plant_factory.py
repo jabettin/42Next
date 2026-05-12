@@ -1,28 +1,43 @@
 #!/usr/bin/env python3
+import json
+
 class Plant:
     def __init__(
-        self, name: str, initial_height: float, initial_age: int
+        self, name: str, height: float, age: int
     ) -> None:
         self.name = name
-        self.initial_height = initial_height
-        self.initial_age = initial_age
+        self.height = height
+        self.age = age
 
     def show(self) -> None:
-        print(f"Created: {self.name}: {self.initial_height}cm, "
-              f"{self.initial_age} days old")
+        print(f"Created: {self.name}: {self.height}cm, "
+              f"{self.age} days old")
 
     def grow(self) -> None:
-        self.initial_height += 0.8
+        self.height += 0.8
+
+
+def factory(data: list[dict]) -> list[Plant]:
+    result = []
+    for x in data:
+        obj = Plant(**x)
+        result.append(obj)
+    return result
+
 
 
 if __name__ == '__main__':
-    plants = {
-        "Rose": Plant("Rose", 25.0, 21),
-        "Sunflower": Plant("Sunflower", 44.3, 19),
-        "Cactus": Plant("Cactus", 33.1, 30),
-        "Lilly": Plant("Lilly", 13.5, 18),
-        "Poppy": Plant("Poppy", 15.2, 24),
-    }
+    with open("/home/jabettin/Desktop/GitHub/Python_Modules/Python_Module01/ex3/plants.json") as f:
+        plant_data = json.load(f)
+
+    print("raw from file: ", plant_data)
+    print()
+
+    plants = factory(plant_data)
+    print("after factory: ", plants)
+    print()
+
+
     print("=== Plant Factory Output ===")
-    for plant in plants.values():
-        plant.show()
+    for x in plants:
+        x.show()

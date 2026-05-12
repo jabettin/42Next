@@ -1,0 +1,7 @@
+[
+    {"name": "Rose",      "height": 25.0, "age": 21},
+    {"name": "Sunflower", "height": 44.3, "age": 19},
+    {"name": "Cactus",    "height": 33.1, "age": 30},
+    {"name": "Lilly",     "height": 13.5, "age": 18},
+    {"name": "Poppy",     "height": 15.2, "age": 24}
+]
