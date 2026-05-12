@@ -25,7 +25,6 @@ def factory(data: list[dict]) -> list[Plant]:
     return result
 
 
-
 if __name__ == '__main__':
     with open("/home/jabettin/Desktop/GitHub/Python_Modules/Python_Module01/ex3/plants.json") as f:
         plant_data = json.load(f)
