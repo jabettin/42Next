@@ -1,0 +1,321 @@
+================================================================================
+PYTHON DATA STRUCTURES - COMPLETE SUMMARY
+================================================================================
+
+--------------------------------------------------------------------------------
+1. LIST
+--------------------------------------------------------------------------------
+Syntax:
+    plants = ["Rose", "Cactus", "Fern"]
+
+Use case:
+    Ordered sequence of items where position matters.
+    Like a C array but resizes automatically.
+
+Access:
+    plants[0]       # "Rose"      — by index (zero-based)
+    plants[-1]      # "Fern"      — negative index (from end)
+    plants[0:2]     # ["Rose", "Cactus"] — slice
+    len(plants)     # 3           — length
+    "Rose" in plants # True       — membership check
+
+Print:
+    print(plants)                   # whole list
+    print(plants[0])                # single item
+    for item in plants:             # each item
+        print(item)
+    for i, item in enumerate(plants): # each item with its index
+        print(i, item)
+
+Modify:
+    plants.append("Tulip")          # add to end
+    plants.insert(1, "Tulip")       # insert at index
+    plants.remove("Rose")           # remove by value
+    plants.pop(0)                   # remove by index
+    plants[0] = "Daisy"             # overwrite at index
+
+Limits:
+    - Access by position only, no named keys
+    - You must remember what each index means
+    - Mutable (can be changed)
+
+--------------------------------------------------------------------------------
+2. DICT
+--------------------------------------------------------------------------------
+Syntax:
+    plant = {"name": "Rose", "height": 20, "age": 15}
+
+Use case:
+    One record with named fields. Equivalent to a C struct.
+    Use when one thing has multiple named attributes.
+
+Access:
+    plant["name"]           # "Rose"   — by key
+    plant.keys()            # dict_keys(["name", "height", "age"])
+    plant.values()          # dict_values(["Rose", 20, 15])
+    plant.items()           # dict_items([("name", "Rose"), ...])
+    "name" in plant         # True     — check if key exists
+    len(plant)              # 3        — number of key-value pairs
+
+Print:
+    print(plant)                        # whole dict
+    print(plant["name"])                # single value
+    print(plant.keys())                 # all keys
+    print(plant.values())               # all values
+    for key in plant:                   # each key
+        print(key)
+    for key, value in plant.items():    # each key-value pair
+        print(key, value)
+
+Modify:
+    plant["color"] = "red"      # add new key
+    plant["height"] = 25        # update existing key
+    plant.pop("age")            # remove a key
+
+Limits:
+    - One record only — for multiple records you need a list of dicts
+    - Keys must be immutable (string, int, tuple)
+    - Values can be anything
+
+--------------------------------------------------------------------------------
+3. TUPLE
+--------------------------------------------------------------------------------
+Syntax:
+    plant = ("Rose", 20, 15)                    # explicit, preferred
+    plant = "Rose", 20, 15                      # bare comma, implicit — avoid
+
+Use case:
+    An ordered sequence that should never change.
+    Coordinates, fixed pairs, function return values.
+
+Access:
+    plant[0]        # "Rose"    — by index, same as list
+    plant[-1]       # 15        — negative index works too
+    len(plant)      # 3
+
+Print:
+    print(plant)        # whole tuple
+    print(plant[0])     # single item
+    for item in plant:  # each item
+        print(item)
+
+Unpacking:
+    name, height, age = plant   # assign each value to its own variable
+    print(name)                 # "Rose"
+
+Limits:
+    - Immutable — cannot add, remove, or change elements after creation
+    - Access by position only, no named keys
+    - Easy to create by accident with a bare comma (missing outer brackets)
+
+--------------------------------------------------------------------------------
+4. SET
+--------------------------------------------------------------------------------
+Syntax:
+    plants = {"Rose", "Cactus", "Fern"}
+
+Use case:
+    Collection of unique items. Automatically removes duplicates.
+    Rarely used compared to lists and dicts.
+
+Access:
+    "Rose" in plants    # True    — membership check only
+    len(plants)         # 3
+
+Limits:
+    - No index access (unordered)
+    - No duplicate values allowed
+    - Elements must be immutable
+
+--------------------------------------------------------------------------------
+5. LIST OF LISTS
+--------------------------------------------------------------------------------
+Syntax:
+    plants = [
+        ["Rose", 20, 15],
+        ["Poppy", 10, 8]
+    ]
+
+Use case:
+    Grids, matrices, tables where position IS the meaning (row/column).
+    Weak choice for named records — no labels, all positional.
+
+Access:
+    plants[0]           # ["Rose", 20, 15]  — inner list
+    plants[0][0]        # "Rose"            — row 0, column 0
+    plants[0][1]        # 20                — row 0, column 1
+
+Print:
+    print(plants)               # whole structure
+    print(plants[0][0])         # single value
+    for row in plants:          # each inner list
+        print(row)
+    for row in plants:          # each individual value
+        for value in row:
+            print(value)
+
+Limits:
+    - Access by position only at every layer
+    - No labels — must remember what index 0, 1, 2 mean
+    - Best for grids/matrices, poor for named records
+
+--------------------------------------------------------------------------------
+6. LIST OF DICTS
+--------------------------------------------------------------------------------
+Syntax:
+    plants = [
+        {"name": "Rose",  "height": 20, "age": 15},
+        {"name": "Poppy", "height": 10, "age": 8}
+    ]
+
+Use case:
+    Multiple records with named fields, accessed by position.
+    Hybrid — positional to find the record, named to find the attribute.
+
+Access:
+    plants[0]               # {"name": "Rose", ...}  — whole record
+    plants[0]["name"]       # "Rose"                 — named attribute
+    plants[1]["height"]     # 10
+
+Print:
+    print(plants)                       # whole structure
+    print(plants[0]["name"])            # single value
+    for plant in plants:                # each record
+        print(plant)
+    for plant in plants:                # each record's values
+        for key, value in plant.items():
+            print(key, value)
+
+Limits:
+    - Still need an index to find a record (plants[0])
+    - Must know or remember the position of each record
+    - Better than list of lists but still a hybrid
+
+--------------------------------------------------------------------------------
+7. DICT OF DICTS
+--------------------------------------------------------------------------------
+Syntax:
+    plants = {
+        "rose":  {"height": 20, "age": 15},
+        "poppy": {"height": 10, "age": 8}
+    }
+
+Use case:
+    Multiple records, fully named at every layer. No positions anywhere.
+    Best when you need to look up a specific record directly by name/id.
+
+Access:
+    plants["rose"]              # {"height": 20, "age": 15}  — whole record
+    plants["rose"]["height"]    # 20                         — named attribute
+    plants.keys()               # outer keys (the IDs)
+    plants["rose"].keys()       # inner keys (the attributes)
+
+Print:
+    print(plants)                           # whole structure
+    print(plants["rose"])                   # single record
+    print(plants["rose"]["height"])         # single value
+    for key in plants:                      # each outer key
+        print(key)
+    for name, plant in plants.items():      # each record
+        print(name, plant)
+    for name, plant in plants.items():      # every value
+        for key, value in plant.items():
+            print(key, value)
+
+Limits:
+    - No positional access (plants[0] fails — 0 is not a key)
+    - Slightly more verbose to loop over than a list
+    - No behaviour (methods) — just data
+
+--------------------------------------------------------------------------------
+8. LIST OF OBJECTS
+--------------------------------------------------------------------------------
+Syntax:
+    plants = [
+        Plant("Rose", 20, 15),
+        Plant("Poppy", 10, 8)
+    ]
+
+Use case:
+    Multiple records with named fields AND behaviour (methods).
+    Positional to find the record, dot notation for attributes and methods.
+
+Access:
+    plants[0]               # Plant object
+    plants[0].name          # "Rose"    — attribute
+    plants[0].height        # 20
+    plants[0].show()        # call a method
+
+Print:
+    print(plants[0].name)           # single attribute
+    for plant in plants:            # loop and call method
+        plant.show()
+    for plant in plants:            # loop and print __dict__
+        print(vars(plant))
+
+Limits:
+    - Still positional to find the record (plants[0])
+    - Must know or remember position of each record
+    - Requires a class definition
+
+--------------------------------------------------------------------------------
+9. DICT OF OBJECTS
+--------------------------------------------------------------------------------
+Syntax:
+    plants = {
+        "rose":  Plant("Rose", 20, 15),
+        "poppy": Plant("Poppy", 10, 8)
+    }
+
+Use case:
+    The most powerful general-purpose structure for named records with behaviour.
+    Fully named at every layer AND methods available.
+    No positions anywhere.
+
+Access:
+    plants["rose"]              # Plant object
+    plants["rose"].name         # "Rose"    — attribute
+    plants["rose"].height       # 20
+    plants["rose"].show()       # call a method
+
+Print:
+    print(plants["rose"].name)              # single attribute
+    for plant in plants.values():           # loop objects only
+        plant.show()
+    for name, plant in plants.items():      # loop keys and objects
+        plant.show()
+    for name, plant in plants.items():      # loop and print __dict__
+        print(name, vars(plant))
+
+Limits:
+    - Requires a class definition
+    - No positional access
+    - Slightly more setup than simpler structures
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+Structure           Syntax                          Access
+--------------------------------------------------------------------------------
+list                [a, b, c]                       list[0]
+dict                {"k": v}                        dict["k"]
+tuple               (a, b, c)                       tuple[0]  — immutable
+set                 {a, b, c}                       membership only
+list of lists       [[a,b], [c,d]]                  list[0][1]
+list of dicts       [{"k":v}, {"k":v}]              list[0]["k"]
+dict of dicts       {"id": {"k":v}}                 dict["id"]["k"]
+list of objects     [Obj(), Obj()]                  list[0].attr
+dict of objects     {"id": Obj()}                   dict["id"].attr
+
+================================================================================
+WHEN TO USE WHAT
+================================================================================
+
+One record, named fields               -> dict
+Many records, loop over them           -> list of dicts or list of objects
+Many records, look up by name/id       -> dict of dicts or dict of objects
+Records with behaviour (methods)       -> list/dict of objects
+Grid or matrix (position = meaning)    -> list of lists
+Fixed values that never change         -> tuple
+Unique items, no duplicates            -> set

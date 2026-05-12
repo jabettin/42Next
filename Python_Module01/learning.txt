@@ -1,0 +1,96 @@
+================================================================================
+PYTHON LEARNING NOTES
+================================================================================
+
+--------------------------------------------------------------------------------
+SELF AND INSTANCE ATTRIBUTES
+--------------------------------------------------------------------------------
+- Parameters in __init__ (e.g. name) are local variables — gone when __init__ returns
+- self.name = name writes to the object's __dict__, persisting for the object's lifetime
+- Any method that receives self can access self.name because self is the same object
+- self.name = name is NOT local — it writes to the object, not the function scope
+
+--------------------------------------------------------------------------------
+FOR LOOPS AND ITERATION
+--------------------------------------------------------------------------------
+- Python's for loop is a for-each — gives you the item directly, not an index
+- The loop variable (e.g. plant, x) is created automatically by Python each iteration
+- The name is arbitrary — "for banana in plants" works identically to "for plant in plants"
+- C equivalent: Java's enhanced for loop (for Plant plant : plants)
+- C has no for-each — you always manage the index or pointer yourself
+
+    for item in collection:         # item itself
+    for i, item in enumerate(lst):  # index AND item
+    for key in dict:                # keys only
+    for val in dict.values():       # values only
+    for key, val in dict.items():   # both, unpacked from tuple pairs
+
+--------------------------------------------------------------------------------
+UNPACKING
+--------------------------------------------------------------------------------
+- When a function returns pairs (like dict.items()), the comma unpacks them:
+    for key, plant in plants.items():   # ("rose", Plant(...)) split into two vars
+- Same concept works anywhere:
+    a, b = (1, 2)   # tuple unpacking
+- dict.items() returns tuples under the hood — the comma unpacks each one
+
+--------------------------------------------------------------------------------
+DICT OF OBJECTS — THE FLOW
+--------------------------------------------------------------------------------
+- Instantiation happens BEFORE the dict stores it:
+    "Rose": Plant("Rose", 25.0, 21)
+    # 1. Plant("Rose", 25.0, 21) runs __init__, builds the object
+    # 2. dict stores the finished object under key "Rose"
+
+- The class never sees the outer dict — it just receives plain arguments
+- Equivalent to:
+    rose = Plant("Rose", 25.0, 21)  # build object
+    plants = {"Rose": rose}          # store it — same result, more verbose
+
+- The actual memory structure:
+    outer dict
+    └── key: "Rose"
+        └── value: Plant object
+            └── __dict__: {"name": "Rose", "initial_height": 25.0, "initial_age": 21}
+
+- A dict containing an object containing a dict — two separate dicts, unrelated to each other
+
+--------------------------------------------------------------------------------
+NAME REDUNDANCY IN DICT OF OBJECTS
+--------------------------------------------------------------------------------
+- When the key and an object attribute hold the same value, it is stored twice:
+    "Rose": Plant("Rose", 25.0, 21)
+    #  ^               ^
+    #  in the dict key  AND in self.name inside the object
+
+- If you rename it you have to change it in both places
+- Unavoidable if show() needs self.name — the object must carry its own name
+- Acceptable tradeoff for exercises, worth being aware of in larger codebases
+
+--------------------------------------------------------------------------------
+DICT ACCESS METHODS
+--------------------------------------------------------------------------------
+- dict.keys()    — just the keys ("Rose", "Poppy")
+- dict.values()  — just the values (the objects)
+- dict.items()   — pairs of (key, value) as tuples
+
+- In a dict of objects, the VALUE is the entire object:
+    plants["rose"]          # the Plant object
+    plants["rose"].name     # attribute on that object
+    plants["rose"].show()   # method on that object
+
+- Use values() when you only need the objects (cleanest with show())
+- Use items() when you need both the key and the object
+
+--------------------------------------------------------------------------------
+__DICT__ AND VARS()
+--------------------------------------------------------------------------------
+- Every object stores its attributes in a hidden dict called __dict__
+- self.name = name is essentially self.__dict__["name"] = name under the hood
+- You can inspect it directly:
+    print(rose.__dict__)    # {"name": "Rose", "initial_height": 25.0, "initial_age": 21}
+    print(vars(rose))       # same thing, cleaner syntax
+
+- Without a show() method, printing an object gives a memory address:
+    print(rose)             # <__main__.Plant object at 0x...>
+- show() tells Python how to display the object in a readable way
