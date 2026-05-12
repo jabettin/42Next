@@ -26,7 +26,7 @@ def factory(data: list[dict]) -> list[Plant]:
 
 
 if __name__ == '__main__':
-    with open("/home/jabettin/Desktop/GitHub/Python_Modules/Python_Module01/ex3/plants.json") as f:
+    with open("$PATH/plants.json") as f:
         plant_data = json.load(f)
 
     print("raw from file: ", plant_data)
