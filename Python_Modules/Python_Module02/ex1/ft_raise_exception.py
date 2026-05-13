@@ -9,6 +9,7 @@ def input_temperature(tempstr: str) -> int:
     else:
         raise ValueError(f"{result}°C is too cold for plants (min 0°C)")
 
+
 def test_temperature() -> None:
     print("=== Garden Temperature Checker ===")
     print()

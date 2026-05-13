@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-
 def input_temperature(tempstr: str) -> int:
     return int(tempstr)
+
 
 def test_temperature() -> None:
     print("=== Garden Temperature ===")
