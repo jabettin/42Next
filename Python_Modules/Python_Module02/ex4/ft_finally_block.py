@@ -25,7 +25,7 @@ def test_watering_system() -> None:
     print("Opening watering system")
     try:
         for plant in ["Tomato", "Lettuce", "Carrots"]:
-            water_plant(plant.capitalize())
+            water_plant(plant)
     except PlantError as e:
         print(f"Caught {type(e).__name__}: {e}")
         print(".. ending tests and returning to main")
