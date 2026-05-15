@@ -14,10 +14,30 @@ class PlantError(GardenError):
 
 
 def water_plant(plant_name: str):
-    if islower(plant_name):
-        raise PlantError(f"Caught PlantError: Invalid plant name to water: {plant_name}")
+    if plant_name.islower():
+        raise PlantError(f"Invalid plant name to water: {plant_name}")
+    else:
+        print(f"Watering {plant_name}: [OK]")
+
 
 def test_watering_system() -> None:
     print("Opening watering system")
-    for plants in [water_plant("Tomato"), water_plant("Lettuce"), water_plant("Carrots")]:
+    print("Testing valid plants...")
+    for x in ["Tomato", "Lettuce", "Carrots"]:
         try:
+            water_plant(x.capitalize())
+        except PlantError as e:
+            print(f"Caught {type(e).__name__}: {e}")
+    print()
+    print("Testing invalid plants...")
+    for x in ["Tomato", "Lettuce", "Carrots"]:
+        try:
+            water_plant(x.lower())
+        except PlantError as e:
+            print(f"Caught {type(e).__name__}: {e}")
+
+
+if __name__ == '__main__':
+    print("=== Garden Watering System ===")
+    print()
+    test_watering_system()
