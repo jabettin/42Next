@@ -5,9 +5,6 @@ class GardenError(Exception):
         super().__init__(message)
         self.message = message
 
-    def __str__(self) -> str:
-        return f"{self.message}"
-
 
 class PlantError(GardenError):
     def __init__(self, message: str = "Unknown plant error") -> None:
