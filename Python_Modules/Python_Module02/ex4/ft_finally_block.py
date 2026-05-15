@@ -21,20 +21,28 @@ def water_plant(plant_name: str):
 
 
 def test_watering_system() -> None:
-    print("Opening watering system")
     print("Testing valid plants...")
+    print("Opening watering system")
     for x in ["Tomato", "Lettuce", "Carrots"]:
         try:
             water_plant(x.capitalize())
         except PlantError as e:
             print(f"Caught {type(e).__name__}: {e}")
+        finally:
+            print("Closing watering sytem")
     print()
     print("Testing invalid plants...")
+    print("Opening watering system")
     for x in ["Tomato", "Lettuce", "Carrots"]:
         try:
             water_plant(x.lower())
         except PlantError as e:
             print(f"Caught {type(e).__name__}: {e}")
+        finally:
+            print("Closing watering system")
+
+    print()
+    print("Cleanup always happens, even with errors")
 
 
 if __name__ == '__main__':
