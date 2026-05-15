@@ -13,9 +13,9 @@ class PlantError(GardenError):
         super().__init__(message)
 
 
-def water_plant(plant_name: str):
-    if plant_name.islower():
-        raise PlantError(f"Invalid plant name to water: {plant_name}")
+def water_plant(plant_name: str) -> None:
+    if plant_name != plant_name.capitalize():
+        raise PlantError(f"Invalid plant name to water: '{plant_name}'")
     else:
         print(f"Watering {plant_name}: [OK]")
 
@@ -23,24 +23,27 @@ def water_plant(plant_name: str):
 def test_watering_system() -> None:
     print("Testing valid plants...")
     print("Opening watering system")
-    for x in ["Tomato", "Lettuce", "Carrots"]:
-        try:
-            water_plant(x.capitalize())
-        except PlantError as e:
-            print(f"Caught {type(e).__name__}: {e}")
-        finally:
-            print("Closing watering sytem")
+    try:
+        for plant in ["Tomato", "Lettuce", "Carrots"]:
+            water_plant(plant.capitalize())
+    except PlantError as e:
+        print(f"Caught {type(e).__name__}: {e}")
+        print(".. ending tests and returning to main")
+        return
+    finally:
+        print("Closing watering sytem")
     print()
     print("Testing invalid plants...")
     print("Opening watering system")
-    for x in ["Tomato", "Lettuce", "Carrots"]:
-        try:
-            water_plant(x.lower())
-        except PlantError as e:
-            print(f"Caught {type(e).__name__}: {e}")
-        finally:
-            print("Closing watering system")
-
+    try:
+        for plant in ["Tomato", "lettuce", "Carrots"]:
+            water_plant(plant)
+    except PlantError as e:
+        print(f"Caught {type(e).__name__}: {e}")
+        print(".. ending tests and returning to main")
+        return
+    finally:
+        print("Closing watering system")
     print()
     print("Cleanup always happens, even with errors")
 
@@ -49,3 +52,5 @@ if __name__ == '__main__':
     print("=== Garden Watering System ===")
     print()
     test_watering_system()
+    print()
+    print("Cleanup always happens, even with errors!")
