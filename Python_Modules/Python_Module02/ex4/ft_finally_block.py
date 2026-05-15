@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 class GardenError(Exception):
-    def __init__(self, message: str = "Unknown Garden Error"):
+    def __init__(self, message: str = "Unknown Garden Error") -> None:
         super().__init__(message)
         self.message = message
 
@@ -9,7 +9,7 @@ class GardenError(Exception):
 
 
 class PlantError(GardenError):
-    def __init__(self, message: str = "Unknown Plant Error"):
+    def __init__(self, message: str = "Unknown Plant Error") -> None:
         super().__init__(message)
 
 
@@ -31,7 +31,7 @@ def test_watering_system() -> None:
         print(".. ending tests and returning to main")
         return
     finally:
-        print("Closing watering sytem")
+        print("Closing watering system")
     print()
     print("Testing invalid plants...")
     print("Opening watering system")
