@@ -18,6 +18,7 @@ if __name__ == '__main__':
         else:
             print(f"Scores processed: {scores}")
             print(f"Total players: {len(scores)}")
+            print(f"Total score: {sum(scores)}")
             print(f"Average score: {round(sum(scores) / len(scores), 1)}")
             print(f"High score: {max(scores)}")
             print(f"Low score: {min(scores)}")
