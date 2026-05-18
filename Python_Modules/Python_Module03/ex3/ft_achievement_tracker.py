@@ -16,4 +16,14 @@ def gen_player_achievements() -> set[str]:
 
 def main() -> None:
     print('=== Achievement Tracker System ===')
-    Alice
+    players: dict[str, set[str]] = {
+        'Alice': gen_player_achievements(),
+        'Bob': gen_player_achievements(),
+        'Charlie': gen_player_achievements(),
+        'Dylan': gen_player_achievements(),
+    }
+    for name, achievements in players.items():
+        print(f"Player {name}: {achievements}")
+
+if __name__ == '__main__':
+    main()
