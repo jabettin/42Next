@@ -49,7 +49,7 @@ def main() -> None:
         for other_name, other_set in players.items():
             if other_name != name:
                 others_union = others_union.union(other_set)
-    exclusive = achievements.difference(others_union)
+        exclusive = achievements.difference(others_union)
         print(f"Only {name} has: {exclusive}")
     print()
 
