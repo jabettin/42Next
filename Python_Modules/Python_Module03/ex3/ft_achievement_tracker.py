@@ -35,7 +35,7 @@ def main() -> None:
     all_unlocked: set[str] = set()
     for achievements in player_sets:
         all_unlocked = all_unlocked.union(achievements)
-        print(f"All distinct achievements: {all_unlocked}")
+    print(f"All distinct achievements: {all_unlocked}")
     print()
 
     common = player_sets[0]
@@ -49,7 +49,7 @@ def main() -> None:
         for other_name, other_set in players.items():
             if other_name != name:
                 others_union = others_union.union(other_set)
-        exclusive = achievements.difference(others_union)
+    exclusive = achievements.difference(others_union)
         print(f"Only {name} has: {exclusive}")
     print()
 
