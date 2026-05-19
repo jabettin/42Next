@@ -29,13 +29,15 @@ def main() -> None:
         inventory_keys = list(INVENTORY.keys())
         print(f"Item list: {inventory_keys}")
         total_values = sum(INVENTORY.values())
-        print(f"Total quantity of the {len(inventory_keys)} items: {total_values}")
+        print("Total quantity of the "
+              f"{len(inventory_keys)} items: {total_values}")
         for item, quantity in INVENTORY.items():
-            print(f"Item {item} represents {round(quantity / total_values * 100, 1)}%")
+            print(f"Item {item} represents "
+                  f"{round(quantity / total_values * 100, 1)}%")
         max_item, max_qty = list(INVENTORY.items())[0]
         min_item, min_qty = list(INVENTORY.items())[0]
         for item, quantity in INVENTORY.items():
-            if  quantity > max_qty:
+            if quantity > max_qty:
                 max_item = item
                 max_qty = quantity
             if quantity < min_qty:
