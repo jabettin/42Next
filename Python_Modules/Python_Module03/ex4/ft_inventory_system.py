@@ -28,9 +28,10 @@ def main() -> None:
         print(f"Got inventory: {INVENTORY}")
         inventory_keys = list(INVENTORY.keys())
         print(f"Item list: {inventory_keys}")
-        print(f"Total quantity of the {len(inventory_keys)} items: {sum(INVENTORY.values())}")
+        total_values = sum(INVENTORY.values())
+        print(f"Total quantity of the {len(inventory_keys)} items: {total_values}")
         for item, quantity in INVENTORY.items():
-            print(f"Item {item} represents {round(quantity / sum(INVENTORY.values()) * 100, 1)}%")
+            print(f"Item {item} represents {round(quantity / total_values * 100, 1)}%")
         max_item, max_qty = list(INVENTORY.items())[0]
         min_item, min_qty = list(INVENTORY.items())[0]
         for item, quantity in INVENTORY.items():
@@ -44,6 +45,7 @@ def main() -> None:
         print(f"Item least abundant: {min_item} with quantity {min_qty}")
         INVENTORY.update({'magic_item': 1})
         print(f"Updated inventory: {INVENTORY}")
+
 
 if __name__ == '__main__':
     main()
