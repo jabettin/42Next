@@ -2,7 +2,8 @@
 
 import math
 
-def get_player_pos() -> tuple:
+
+def get_player_pos() -> tuple[float, float, float]:
     while True:
         coords = input("Enter new coordinates as floats in format 'x,y,z': ")
         parts = coords.split(',')
@@ -17,6 +18,7 @@ def get_player_pos() -> tuple:
         else:
             print("Invalid syntax")
 
+
 if __name__ == '__main__':
     print('=== Game Coordinate System ===')
     print()
@@ -28,4 +30,5 @@ if __name__ == '__main__':
     print()
     print('Get a second set of coordinates')
     x2, y2, z2 = get_player_pos()
-    print(f"Distance between the 2 sets of coordinates: {round(math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2), 4)}")
+    print("Distance between the 2 sets of coordinates: "
+          f"{round(math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2), 4)}")
