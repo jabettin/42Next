@@ -1,8 +1,5 @@
->Note that the subject attached to this module might differ from yours.
->
->They tend to get updated often
->
->Per ex3/ft_plant_factory.py note to **_not_** include the json, and just copy the json contents into main as follows:
+
+>Per ex3/ft_plant_factory.py: note to **_not_** include the json, and just copy the json contents into main as follows:
 
 ```python
 if __name__ == '__main__':
