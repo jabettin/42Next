@@ -10,6 +10,7 @@ ALL_ACHIEVEMENTS = [
     "Team Player",
 ]
 
+
 def gen_player_achievements() -> set[str]:
     count = random.randint(5, 9)
     return set(random.sample(ALL_ACHIEVEMENTS, count))
@@ -56,6 +57,7 @@ def main() -> None:
     for name, achievements in players.items():
         missing = all_achievements.difference(achievements)
         print(f"{name} is missing: {missing}")
+
 
 if __name__ == '__main__':
     main()
