@@ -25,7 +25,25 @@ def main() -> None:
                 print(f"Quantity error for '{parts[0]}': {e}")
                 continue
             INVENTORY[parts[0]] = int(parts[1])
-
+        print(f"Got inventory: {INVENTORY}")
+        inventory_keys = list(INVENTORY.keys())
+        print(f"Item list: {inventory_keys}")
+        print(f"Total quantity of the {len(inventory_keys)} items: {sum(INVENTORY.values())}")
+        for item, quantity in INVENTORY.items():
+            print(f"Item {item} represents {round(quantity / sum(INVENTORY.values()) * 100, 1)}%")
+        max_item, max_qty = list(INVENTORY.items())[0]
+        min_item, min_qty = list(INVENTORY.items())[0]
+        for item, quantity in INVENTORY.items():
+            if  quantity > max_qty:
+                max_item = item
+                max_qty = quantity
+            if quantity < min_qty:
+                min_item = item
+                min_qty = quantity
+        print(f"Item most abundant: {max_item} with quantity {max_qty}")
+        print(f"Item least abundant: {min_item} with quantity {min_qty}")
+        INVENTORY.update({'magic_item': 1})
+        print(f"Updated inventory: {INVENTORY}")
 
 if __name__ == '__main__':
     main()
