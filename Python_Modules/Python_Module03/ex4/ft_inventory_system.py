@@ -26,9 +26,15 @@ def main() -> None:
                 continue
             INVENTORY[parts[0]] = int(parts[1])
         print(f"Got inventory: {INVENTORY}")
+        if not INVENTORY:
+            print("No valid items.")
+            return
         inventory_keys = list(INVENTORY.keys())
         print(f"Item list: {inventory_keys}")
         total_values = sum(INVENTORY.values())
+        if total_values == 0:
+            print("All quantities are zero.")
+            return
         print("Total quantity of the "
               f"{len(inventory_keys)} items: {total_values}")
         for item, quantity in INVENTORY.items():
