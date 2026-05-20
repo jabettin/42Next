@@ -7,8 +7,21 @@ import typing
 
 
 def main() -> None:
-    f = open("text.txt")
-    print(f.read())
+    argc = len(sys.argv)
+    if argc == 2:
+        print('=== Cyber Archives Recovery ===')
+        try:
+            f = open(sys.argv[1])
+            print(f"Accessing file '{sys.argv[1]}'")
+            print('---')
+            print()
+            print(f.read())
+            print()
+            print('---')
+        except FileNotFoundError as e:
+            print(f"Error opening file '{sys.argv[1]}': {e}")
+    else:
+        print('Usage: ft_ancient_text.py <file>')
 
 if __name__ == '__main__':
     main()
