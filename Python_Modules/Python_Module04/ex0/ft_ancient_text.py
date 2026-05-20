@@ -20,6 +20,8 @@ def main() -> None:
             print('---')
         except FileNotFoundError as e:
             print(f"Error opening file '{sys.argv[1]}': {e}")
+        except PermissionError as e:
+            print(f"Error opening file '{sys.argv[1]}': {e}")
     else:
         print('Usage: ft_ancient_text.py <file>')
 
