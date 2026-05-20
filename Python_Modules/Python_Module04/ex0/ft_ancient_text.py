@@ -7,8 +7,8 @@ import typing
 
 
 def main() -> None:
-    with open(text.txt) as f:
-        reader = f.read()
+    with open("Python_Modules/Python_Module04/ex0/text.txt") as f:
+        reader = f.read
         print(reader)
 
 
