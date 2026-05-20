@@ -7,8 +7,9 @@ import typing
 
 
 def main() -> None:
-    f = 
-    print(f.read())
+    with open(text.txt) as f:
+        reader = f.read()
+        print(reader)
 
 
 if __name__ == '__main__':
