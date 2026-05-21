@@ -8,7 +8,6 @@ def transform_data(content: str) -> str:
     return '\n'.join(line + '#' for line in content.splitlines())
 
 
-
 def main() -> None:
     if len(sys.argv) != 2:
         print('Usage: ft_ancient_text.py <file>')
@@ -40,8 +39,8 @@ def main() -> None:
     print('---')
     new_file = input('Enter new file name (or empty): ')
     out_file: typing.IO[str] | None = None
-    print(f"Saving data to '{new_file}'")
     if new_file:
+        print(f"Saving data to '{new_file}'")
         try:
             out_file = open(new_file, 'w')
             out_file.write(transformed)
@@ -51,8 +50,10 @@ def main() -> None:
             if out_file is not None:
                 out_file.close()
                 print(f"Data saved in file '{new_file}'.")
-        else:
-            print("Data not saved.")
+            else:
+                print("Data not saved.")
+    else:
+        print('Not saving data.')
 
 
 if __name__ == '__main__':
