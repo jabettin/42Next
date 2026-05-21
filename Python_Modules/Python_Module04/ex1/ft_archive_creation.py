@@ -10,13 +10,13 @@ def transform_data(content: str) -> str:
 
 def main() -> None:
     if len(sys.argv) != 2:
-        print('Usage: ft_ancient_text.py <file>')
+        print('Usage: ft_archive_creation.py <file>')
         return
 
     filename: str = sys.argv[1]
     f: typing.IO[str] | None = None
 
-    print('=== Cyber Archives Recovery ===')
+    print('=== Cyber Archives Recovery & Preservation ===')
     print(f"Accessing file '{filename}'")
     try:
         f = open(filename)
@@ -38,8 +38,8 @@ def main() -> None:
     print(transformed)
     print('---')
     new_file = input('Enter new file name (or empty): ')
-    out_file: typing.IO[str] | None = None
     if new_file:
+        out_file: typing.IO[str] | None = None
         print(f"Saving data to '{new_file}'")
         try:
             out_file = open(new_file, 'w')
