@@ -27,6 +27,7 @@ def main() -> None:
         print('---')
     except OSError as e:
         print(f"Error opening file '{filename}': {e}")
+        return
     finally:
         if f is not None:
             f.close()
@@ -38,6 +39,20 @@ def main() -> None:
     print(transformed)
     print('---')
     new_file = input('Enter new file name (or empty): ')
+    out_file: typing.IO[str] | None = None
+    print(f"Saving data to '{new_file}'")
+    if new_file:
+        try:
+            out_file = open(new_file, 'w')
+            out_file.write(transformed)
+        except OSError as e:
+            print(f"Error opening file '{new_file}': {e}")
+        finally:
+            if out_file is not None:
+                out_file.close()
+                print(f"Data saved in file '{new_file}'.")
+        else:
+            print("Data not saved.")
 
 
 if __name__ == '__main__':
