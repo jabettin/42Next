@@ -4,6 +4,11 @@ import sys
 import typing
 
 
+def transform_data(content: str) -> str:
+    return '\n'.join(line + '#' for line in content.splitlines())
+
+
+
 def main() -> None:
     if len(sys.argv) != 2:
         print('Usage: ft_ancient_text.py <file>')
@@ -16,8 +21,9 @@ def main() -> None:
     print(f"Accessing file '{filename}'")
     try:
         f = open(filename)
+        content = f.read()
         print('---')
-        print(f.read(), end='')
+        print(content, end='')
         print('---')
     except OSError as e:
         print(f"Error opening file '{filename}': {e}")
@@ -26,7 +32,8 @@ def main() -> None:
             f.close()
             print(f"File '{filename}' closed.")
 
-    
+    transformed = transform_data(content)
+    print(transformed)
 
 
 if __name__ == '__main__':
