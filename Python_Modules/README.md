@@ -11,6 +11,11 @@
 >To use this Makefile, copy it from the root repository into your current working directory and run `make`.
 >
 >This will execute mypy and flake8 on all the .py files within your current working directory
+>
+>To clean up the newly created mypy instance, run: `make clean`
+REMOVE THIS, BUT GIT ADD . AND COMMIT THE LINE ABOVE
+
+
 
 ```make
 EXERCISES	:= $(wildcard ex*)
