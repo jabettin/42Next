@@ -11,17 +11,17 @@ def main() -> None:
     if argc == 2:
         print('=== Cyber Archives Recovery ===')
         try:
-            f = open(sys.argv[1])
             print(f"Accessing file '{sys.argv[1]}'")
+            f = open(sys.argv[1])
             print('---')
             print()
             print(f.read())
             print()
             print('---')
-        except FileNotFoundError as e:
+        except OSError as e:
             print(f"Error opening file '{sys.argv[1]}': {e}")
-        except PermissionError as e:
-            print(f"Error opening file '{sys.argv[1]}': {e}")
+        print(f"File {sys.argv[1]} closed.")
+        f.close(sys.argv[1])
     else:
         print('Usage: ft_ancient_text.py <file>')
 
