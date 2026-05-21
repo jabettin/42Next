@@ -31,9 +31,13 @@ def main() -> None:
         if f is not None:
             f.close()
             print(f"File '{filename}' closed.")
-
+    print()
     transformed = transform_data(content)
+    print('Transform data:')
+    print('---')
     print(transformed)
+    print('---')
+    new_file = input('Enter new file name (or empty): ')
 
 
 if __name__ == '__main__':
