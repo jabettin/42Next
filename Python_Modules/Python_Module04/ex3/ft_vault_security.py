@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 
 def secure_archive(filename: str, action: str = 'r', content: str = '') -> tuple[bool, str]:
@@ -15,8 +15,14 @@ def secure_archive(filename: str, action: str = 'r', content: str = '') -> tuple
 
 def main() -> None:
     print('=== Cyber Archives Security ===')
-    secure_archive("ancient_fragments.txt", "r",)
-    secure_archive("ancient_fragments.txt", "w", "hello")
+    result1 = secure_archive("non/existent/file")
+    print(result1)
+    result2 = secure_archive("/etc/shadow")
+    print(result2)
+    result3 = secure_archive("ancient_fragment.txt")
+    print(result3)
+    result4 = secure_archive("newfile.txt", 'w', result3[1])
+    print(result4)
 
 
 if __name__ == '__main__':
