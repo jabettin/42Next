@@ -1,4 +1,4 @@
-#!/usr/bin/evn python3
+#!/usr/bin/env python3
 
 import sys
 import typing
@@ -10,7 +10,7 @@ def transform_data(content: str) -> str:
 
 def main() -> None:
     if len(sys.argv) != 2:
-        print('Usage: ft_archive_creation.py <file>')
+        print('Usage: ft_stream_management.py <file>')
         return
 
     filename: str = sys.argv[1]
@@ -25,7 +25,7 @@ def main() -> None:
         print(content, end='')
         print('---')
     except OSError as e:
-        print(f"Error opening file '{filename}': {e}")
+        sys.stderr.write(f"[STDERR] Error opening file '{filename}': {e}\n")
         return
     finally:
         if f is not None:
@@ -37,7 +37,9 @@ def main() -> None:
     print('---')
     print(transformed)
     print('---')
-    new_file = input('Enter new file name (or empty): ')
+    sys.stdout.write('Enter new file name (or empty): ')
+    sys.stdout.flush()
+    new_file = sys.stdin.readline().rstrip('\n')
     if new_file:
         out_file: typing.IO[str] | None = None
         print(f"Saving data to '{new_file}'")
@@ -45,7 +47,7 @@ def main() -> None:
             out_file = open(new_file, 'w')
             out_file.write(transformed)
         except OSError as e:
-            print(f"Error opening file '{new_file}': {e}")
+            sys.stderr.write(f"[STDERR] Error opening file '{new_file}': {e}\n")
         finally:
             if out_file is not None:
                 out_file.close()
