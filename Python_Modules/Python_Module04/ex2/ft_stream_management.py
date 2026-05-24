@@ -45,7 +45,7 @@ def main() -> None:
         print(f"Saving data to '{new_file}'")
         try:
             out_file = open(new_file, 'w')
-            out_file.write(transformed)
+            out_file.write(transformed + '\n')
         except OSError as e:
             sys.stderr.write(f"[STDERR] Error opening file '{new_file}': {e}\n")
         finally:
