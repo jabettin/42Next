@@ -47,7 +47,8 @@ def main() -> None:
             out_file = open(new_file, 'w')
             out_file.write(transformed + '\n')
         except OSError as e:
-            sys.stderr.write(f"[STDERR] Error opening file '{new_file}': {e}\n")
+            sys.stderr.write(
+                f"[STDERR] Error opening file '{new_file}': {e}\n")
         finally:
             if out_file is not None:
                 out_file.close()
