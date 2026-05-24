@@ -9,6 +9,7 @@ def secure_archive(filename: str, action: str = 'r', content: str = '') -> tuple
             elif action == 'w':
                 f.write(content)
                 return (True, 'Content successfully written to file')
+            return (False, 'Invalid action')
     except OSError as e:
         return (False, str(e))
 
