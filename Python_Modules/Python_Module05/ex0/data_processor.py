@@ -18,7 +18,6 @@ class DataProcessor(ABC):
         return self._data.pop(0)
 
 
-
 class NumericProcessor(DataProcessor):
     def __init__(self) -> None:
         super().__init__()
