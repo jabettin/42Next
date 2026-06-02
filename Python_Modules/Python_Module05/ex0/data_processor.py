@@ -60,7 +60,16 @@ def main() -> None:
     print('=== Code Nexus - Data Processor ===')
     print()
     print('Testing Numeric Processor...')
-
+    np = NumericProcessor()
+    print(f"Trying to validate input '42': {np.validate(42)}")
+    print(f"Trying to validate input 'Hello': {np.validate('Hello')}")
+    try:
+        np.ingest('foo')
+    except Exception as e:
+        print(f"Got exception: {e}")
+    np.ingest([1, 2, 3, 4, 5])
+    for _ in range(4):
+        np.output()
 
 if __name__ == '__main__':
     main()
