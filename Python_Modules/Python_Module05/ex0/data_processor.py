@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import abc
-import typing
+from abc import ABC, abstractmethod
+from typing import Any
 
 
 class DataProcessor(ABC):
@@ -11,11 +11,32 @@ class DataProcessor(ABC):
     @abstractmethod
     def ingest(self, data: Any) -> None:
         pass
+    def output(self) -> tuple[int, str]:
+        pass
 
 
 
 class NumericProcessor(DataProcessor):
-    pass
+    def __init__(self) -> None:
+        self._data: list[str] = []
+        self._rank: int = 0
+
+    def validate(self, data: Any) -> bool:
+        if isinstance(data, (int, float)):
+            return True
+        if isinstance(data, list):
+            return all(isinstance(item, (int, float)) for item in data)
+        return False
+
+    def ingest(self, data: int | float | list[int | float]) -> None:
+        if not self.validate(data):
+            raise 
+        
+
+
+
+
+
 
 
 class TextProcessor(DataProcessor):
@@ -26,7 +47,9 @@ class LogProcessor(DataProcessor):
     pass
 
 def main() -> None:
-    pass
+    print('=== Code Nexus - Data Processor ===')
+    print()
+    print('Testing Numeric Processor...')
 
 
 if __name__ == '__main__':
