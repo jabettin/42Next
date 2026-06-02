@@ -5,7 +5,13 @@ import typing
 
 
 class DataProcessor(ABC):
-    pass
+    @abstractmethod
+    def validate(self, data: Any) -> bool:
+        pass
+    @abstractmethod
+    def ingest(self, data: Any) -> None:
+        pass
+
 
 
 class NumericProcessor(DataProcessor):
