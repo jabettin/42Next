@@ -59,7 +59,10 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
-    pass
+    def validate(self, data: Any) -> bool:
+        if isinstance(data, list[dict{str, str}]):
+            return True
+        if isinstance()
 
 def main() -> None:
     print('=== Code Nexus - Data Processor ===')
