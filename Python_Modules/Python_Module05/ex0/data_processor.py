@@ -72,6 +72,9 @@ class LogProcessor(DataProcessor):
             )
         return False
 
+    def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
+        
+
 
 def main() -> None:
     print('=== Code Nexus - Data Processor ===')
