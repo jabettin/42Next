@@ -60,9 +60,18 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
     def validate(self, data: Any) -> bool:
-        if isinstance(data, list[dict{str, str}]):
-            return True
-        if isinstance()
+        if isinstance(data, dict):
+            return all(isinstance(k, str) and isinstance(v, str)
+                       for k, v in data.items())
+        if isinstance(data, list):
+            return all(
+                isinstance(item, dict) and
+                all(isinstance(k, str) and isinstance(v, str)
+                    for k, v in item.items())
+                for item in data
+            )
+        return False
+
 
 def main() -> None:
     print('=== Code Nexus - Data Processor ===')
