@@ -73,7 +73,12 @@ class LogProcessor(DataProcessor):
         return False
 
     def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
-        
+        if not self.validate(data):
+            raise Exception ('Improper log data')
+        items = data if isinstance(data, list) else [data]
+        for item in items:
+            self._data.append(self._rank, str(item))
+            self._rank += 1
 
 
 def main() -> None:
@@ -106,5 +111,9 @@ def main() -> None:
     for _ in range(extract_count):
         rank, value = tp.output()
         print(f"Text value {rank}: {value}")
+    print()
+    print("Testing Log Processor...")
+    lp = LogProcessor()
+    print(f"Trying to validate input 'Hello': {lp.validate('Hello')}")
 if __name__ == '__main__':
     main()
