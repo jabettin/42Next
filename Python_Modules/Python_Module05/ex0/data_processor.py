@@ -42,7 +42,20 @@ class NumericProcessor(DataProcessor):
 
 
 class TextProcessor(DataProcessor):
-    pass
+    def validate(self, data: Any) -> bool:
+        if isinstance(data, str):
+            return True
+        if isinstance(data, list):
+            return all(isinstance(item, str) for item in data)
+        return False
+
+    def ingest(self, data: str | list[str]) -> None:
+        if not self.validate(data):
+            raise Exception ('Improper text data')
+        items = data if isinstance(data, list) else [data]
+        for item in items:
+            self._data.append((self._rank, item))
+            self._rank += 1
 
 
 class LogProcessor(DataProcessor):
