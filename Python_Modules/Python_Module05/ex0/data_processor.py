@@ -80,6 +80,16 @@ def main() -> None:
     for _ in range(extract_count):
         rank, value = np.output()
         print(f"Numeric value {rank}: {value}")
-
+    print()
+    print('Testing Text Processor...')
+    tp = TextProcessor()
+    print(f"Trying to validate input '42': {tp.validate(42)}")
+    print("Processing data: ['Hello', 'Nexus', 'World']")
+    tp.ingest(['Hello', 'Nexus', 'World'])
+    extract_count = 1
+    print(f"Extracting {extract_count} value...")
+    for _ in range(extract_count):
+        rank, value = tp.output()
+        print(f"Text value {rank}: {value}")
 if __name__ == '__main__':
     main()
