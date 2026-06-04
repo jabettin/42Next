@@ -114,6 +114,14 @@ def main() -> None:
     print()
     print("Testing Log Processor...")
     lp = LogProcessor()
+    log_
     print(f"Trying to validate input 'Hello': {lp.validate('Hello')}")
+    lp.ingest({'log_level': 'NOTICE', 'log_message': 'Connection to server', 'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'})
+    print("Processing data: [{'log_level': 'NOTICE', 'log_message': 'Connection to server', 'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}]")
+    extract_count = 2
+    print(f"Extracting {extract_count} values...")
+    for _ in range(extract_count):
+        rank, value = lp.output()
+        print(f"Log entry {rank}: {value}")
 if __name__ == '__main__':
     main()
