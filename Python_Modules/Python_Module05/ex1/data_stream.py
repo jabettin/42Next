@@ -82,6 +82,16 @@ class LogProcessor(DataProcessor):
             self._rank += 1
 
 
+    class DataStream():
+        def resgister_processor(self, proc: DataProcessor) -> None:
+            pass
+
+        def process_stream(self, stream: list[typing.Any]) -> None:
+            pass
+
+        def print_processor_stats(self) -> None:
+            pass
+
 def main() -> None:
     print('=== Code Nexus - Data Processor ===')
     print()
