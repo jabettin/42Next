@@ -34,7 +34,7 @@ class NumericProcessor(DataProcessor):
 
     def ingest(self, data: int | float | list[int | float]) -> None:
         if not self.validate(data):
-            raise Exception ('Improper numeric data')
+            raise Exception('Improper numeric data')
         items = data if isinstance(data, list) else [data]
         for item in items:
             self._data.append((self._rank, str(item)))
@@ -51,7 +51,7 @@ class TextProcessor(DataProcessor):
 
     def ingest(self, data: str | list[str]) -> None:
         if not self.validate(data):
-            raise Exception ('Improper text data')
+            raise Exception('Improper text data')
         items = data if isinstance(data, list) else [data]
         for item in items:
             self._data.append((self._rank, item))
@@ -74,7 +74,7 @@ class LogProcessor(DataProcessor):
 
     def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
         if not self.validate(data):
-            raise Exception ('Improper log data')
+            raise Exception('Improper log data')
         items = data if isinstance(data, list) else [data]
         for item in items:
             log_str = f"{item['log_level']}: {item['log_message']}"
@@ -97,7 +97,7 @@ def main() -> None:
     print("Processing data: [1, 2, 3, 4, 5]")
     np.ingest([1, 2, 3, 4, 5])
     extract_count = 3
-    print(f"Extracting {extract_count} values...") 
+    print(f"Extracting {extract_count} values...")
     for _ in range(extract_count):
         rank, value = np.output()
         print(f"Numeric value {rank}: {value}")
@@ -116,7 +116,7 @@ def main() -> None:
     print("Testing Log Processor...")
     lp = LogProcessor()
     log_data = [
-        {'log_level': 'NOTICE', 'log_message': 'Connection to server'}, 
+        {'log_level': 'NOTICE', 'log_message': 'Connection to server'},
         {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}
     ]
     print(f"Trying to validate input 'Hello': {lp.validate('Hello')}")
@@ -127,5 +127,7 @@ def main() -> None:
     for _ in range(extract_count):
         rank, value = lp.output()
         print(f"Log entry {rank}: {value}")
+
+
 if __name__ == '__main__':
     main()
