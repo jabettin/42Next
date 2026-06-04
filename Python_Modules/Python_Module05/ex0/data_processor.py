@@ -77,7 +77,7 @@ class LogProcessor(DataProcessor):
             raise Exception ('Improper log data')
         items = data if isinstance(data, list) else [data]
         for item in items:
-            log_str = f"{item[log_level]}: {item[log_message]}"
+            log_str = f"{item['log_level']}: {item['log_message']}"
             self._data.append((self._rank, log_str))
             self._rank += 1
 
