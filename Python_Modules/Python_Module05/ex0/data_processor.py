@@ -77,7 +77,8 @@ class LogProcessor(DataProcessor):
             raise Exception ('Improper log data')
         items = data if isinstance(data, list) else [data]
         for item in items:
-            self._data.append(self._rank, str(item))
+            item
+            self._data.append((self._rank, str(item)))
             self._rank += 1
 
 
@@ -114,10 +115,13 @@ def main() -> None:
     print()
     print("Testing Log Processor...")
     lp = LogProcessor()
-    log_
+    log_data = [
+        {'log_level': 'NOTICE', 'log_message': 'Connection to server'}, 
+        {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}
+    ]
     print(f"Trying to validate input 'Hello': {lp.validate('Hello')}")
-    lp.ingest({'log_level': 'NOTICE', 'log_message': 'Connection to server', 'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'})
-    print("Processing data: [{'log_level': 'NOTICE', 'log_message': 'Connection to server', 'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}]")
+    lp.ingest(log_data)
+    print(f"Processing data: {log_data}")
     extract_count = 2
     print(f"Extracting {extract_count} values...")
     for _ in range(extract_count):
