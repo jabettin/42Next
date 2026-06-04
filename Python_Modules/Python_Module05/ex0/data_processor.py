@@ -120,8 +120,8 @@ def main() -> None:
         {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}
     ]
     print(f"Trying to validate input 'Hello': {lp.validate('Hello')}")
-    lp.ingest(log_data)
     print(f"Processing data: {log_data}")
+    lp.ingest(log_data)
     extract_count = 2
     print(f"Extracting {extract_count} values...")
     for _ in range(extract_count):
