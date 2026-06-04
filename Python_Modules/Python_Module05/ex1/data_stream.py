@@ -82,61 +82,25 @@ class LogProcessor(DataProcessor):
             self._rank += 1
 
 
-    class DataStream():
-        def resgister_processor(self, proc: DataProcessor) -> None:
-            pass
+class DataStream():
+    def __init__(self) -> None:
+        self._processors: list[DataProcessor] = []
 
-        def process_stream(self, stream: list[typing.Any]) -> None:
-            pass
+    def register_processor(self, proc: DataProcessor) -> None:
+        
 
-        def print_processor_stats(self) -> None:
-            pass
+    def process_stream(self, stream: list[Any]) -> None:
+        pass
+
+    def print_processor_stats(self) -> None:
+        pass
+
 
 def main() -> None:
-    print('=== Code Nexus - Data Processor ===')
+    print("=== Code Nexus - Data Stream ===")
     print()
-    print('Testing Numeric Processor...')
-    np = NumericProcessor()
-    print(f"Trying to validate input '42': {np.validate(42)}")
-    print(f"Trying to validate input 'Hello': {np.validate('Hello')}")
-    print("Test invalid ingestion of string 'foo' without prior validation:")
-    try:
-        np.ingest('foo')
-    except Exception as e:
-        print(f"Got exception: {e}")
-    print("Processing data: [1, 2, 3, 4, 5]")
-    np.ingest([1, 2, 3, 4, 5])
-    extract_count = 3
-    print(f"Extracting {extract_count} values...")
-    for _ in range(extract_count):
-        rank, value = np.output()
-        print(f"Numeric value {rank}: {value}")
-    print()
-    print('Testing Text Processor...')
-    tp = TextProcessor()
-    print(f"Trying to validate input '42': {tp.validate(42)}")
-    print("Processing data: ['Hello', 'Nexus', 'World']")
-    tp.ingest(['Hello', 'Nexus', 'World'])
-    extract_count = 1
-    print(f"Extracting {extract_count} value...")
-    for _ in range(extract_count):
-        rank, value = tp.output()
-        print(f"Text value {rank}: {value}")
-    print()
-    print("Testing Log Processor...")
-    lp = LogProcessor()
-    log_data = [
-        {'log_level': 'NOTICE', 'log_message': 'Connection to server'},
-        {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}
-    ]
-    print(f"Trying to validate input 'Hello': {lp.validate('Hello')}")
-    print(f"Processing data: {log_data}")
-    lp.ingest(log_data)
-    extract_count = 2
-    print(f"Extracting {extract_count} values...")
-    for _ in range(extract_count):
-        rank, value = lp.output()
-        print(f"Log entry {rank}: {value}")
+    print("Initialize Data Stream...")
+    
 
 
 if __name__ == '__main__':
