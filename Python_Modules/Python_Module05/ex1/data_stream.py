@@ -90,7 +90,15 @@ class DataStream():
         self._processors,append(proc)
 
     def process_stream(self, stream: list[Any]) -> None:
-        pass
+        for element in stream:
+            handled = False
+            for proc in self._processors:
+                if proc.validate(element):
+                    proc.ingest(element)
+                    handled = True
+                    break
+                if not handled:
+                    print(f"DataStream error - Can't process element in stream: {element}")
 
     def print_processor_stats(self) -> None:
         pass
