@@ -87,7 +87,7 @@ class DataStream():
         self._processors: list[DataProcessor] = []
 
     def register_processor(self, proc: DataProcessor) -> None:
-        
+        self._processors,append(proc)
 
     def process_stream(self, stream: list[Any]) -> None:
         pass
