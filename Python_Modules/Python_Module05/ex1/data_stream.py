@@ -105,8 +105,12 @@ class DataStream():
                 print(f"DataStream error - Can't process element in stream: {element}")
 
     def print_processors_stats(self) -> None:
+        if not self._processors:
+            print("No processor found, no data")
+            return
         for proc in self._processors:
             print(f"{proc.name}: total {proc._rank} items processed, remaining: {len(proc._data)}")
+        
 
 
 def main() -> None:
