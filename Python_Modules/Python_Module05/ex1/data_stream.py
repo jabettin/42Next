@@ -106,7 +106,7 @@ class DataStream():
 
     def print_processors_stats(self) -> None:
         for proc in self._processors:
-            print(f"{proc.name}: total {proc._rank} items processed, remaining: {len(prod._data)}")
+            print(f"{proc.name}: total {proc._rank} items processed, remaining: {len(proc._data)}")
 
 
 def main() -> None:
