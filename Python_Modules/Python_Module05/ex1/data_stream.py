@@ -91,7 +91,7 @@ class DataStream():
         self._processors: list[DataProcessor] = []
 
     def register_processor(self, proc: DataProcessor) -> None:
-        self._processors,append(proc)
+        self._processors.append(proc)
 
     def process_stream(self, stream: list[Any]) -> None:
         for element in stream:
@@ -101,10 +101,10 @@ class DataStream():
                     proc.ingest(element)
                     handled = True
                     break
-                if not handled:
-                    print(f"DataStream error - Can't process element in stream: {element}")
+            if not handled:
+                print(f"DataStream error - Can't process element in stream: {element}")
 
-    def print_processor_stats(self) -> None:
+    def print_processors_stats(self) -> None:
         for proc in self._processors:
             print(f"{proc.name}: total {proc._rank} items processed, remaining: {len(prod._data)}")
 
