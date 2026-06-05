@@ -5,6 +5,7 @@ from typing import Any
 
 
 class DataProcessor(ABC):
+    name: str = ""
     def __init__(self) -> None:
         self._data: list[tuple[int, str]] = []
         self._rank: int = 0
@@ -22,6 +23,7 @@ class DataProcessor(ABC):
 
 
 class NumericProcessor(DataProcessor):
+    name = "Numeric Processor"
     def __init__(self) -> None:
         super().__init__()
 
@@ -42,6 +44,7 @@ class NumericProcessor(DataProcessor):
 
 
 class TextProcessor(DataProcessor):
+    name = "Text Processor"
     def validate(self, data: Any) -> bool:
         if isinstance(data, str):
             return True
@@ -59,6 +62,7 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
+    name = "Log Processor"
     def validate(self, data: Any) -> bool:
         if isinstance(data, dict):
             return all(isinstance(k, str) and isinstance(v, str)
@@ -101,7 +105,8 @@ class DataStream():
                     print(f"DataStream error - Can't process element in stream: {element}")
 
     def print_processor_stats(self) -> None:
-        pass
+        for proc in self._processors:
+            print(f"{proc.name}: total {proc._rank} items processed, remaining: {len(prod._data)}")
 
 
 def main() -> None:
