@@ -105,6 +105,7 @@ class DataStream():
                 print(f"DataStream error - Can't process element in stream: {element}")
 
     def print_processors_stats(self) -> None:
+        print("== DataStream statistics ==")
         if not self._processors:
             print("No processor found, no data")
             return
@@ -118,7 +119,7 @@ def main() -> None:
     print("Initialize Data Stream...")
     ds = DataStream()
     ds.print_processors_stats()
-
+    
 
 if __name__ == '__main__':
     main()
