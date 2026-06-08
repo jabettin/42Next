@@ -109,14 +109,15 @@ class DataStream():
             print("No processor found, no data")
             return
         for proc in self._processors:
-            print(f"{proc.name}: total {proc._rank} items processed, remaining: {len(proc._data)}")
+            print(f"{proc.name}: total {proc._rank} items processed, remaining: {len(proc._data)} on processor")
 
 
 def main() -> None:
     print("=== Code Nexus - Data Stream ===")
     print()
     print("Initialize Data Stream...")
-    
+    ds = DataStream()
+    ds.print_processors_stats()
 
 
 if __name__ == '__main__':
