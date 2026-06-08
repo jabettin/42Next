@@ -118,8 +118,30 @@ def main() -> None:
     print()
     print("Initialize Data Stream...")
     ds = DataStream()
+    np = NumericProcessor()
+    lp = LogProcessor()
+    tp = TextProcessor()
     ds.print_processors_stats()
-    
+    print()
+    print("Registering Numeric Processor")
+    ds.register_processor(np)
+    print()
+    batch: list[Any] = [
+        'Hello world',
+        [3.14, -1, 2.71],
+        [{'log_level': 'WARNING', 'log_message': 'telnet access! Use ssh instead'},
+        {'log_level': 'INFO', 'log_message': 'user wil is connected'}],
+        42,
+        ['Hi', 'five'],
+    ]
+    print(f"Send first batch of data on stream: {batch}")
+    ds.process_stream(batch)
+    ds.print_processors_stats()
+    print()
+    print("Registering other data processors")
+    ds.register_processor(tp)
+    ds.register_processor(lp)
+    print("Send the same batch again")
 
 if __name__ == '__main__':
     main()
