@@ -6,6 +6,7 @@ from typing import Any
 
 class DataProcessor(ABC):
     name: str = ""
+
     def __init__(self) -> None:
         self._data: list[tuple[int, str]] = []
         self._rank: int = 0
@@ -24,6 +25,7 @@ class DataProcessor(ABC):
 
 class NumericProcessor(DataProcessor):
     name = "Numeric Processor"
+
     def __init__(self) -> None:
         super().__init__()
 
@@ -45,6 +47,7 @@ class NumericProcessor(DataProcessor):
 
 class TextProcessor(DataProcessor):
     name = "Text Processor"
+
     def validate(self, data: Any) -> bool:
         if isinstance(data, str):
             return True
@@ -63,6 +66,7 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
     name = "Log Processor"
+
     def validate(self, data: Any) -> bool:
         if isinstance(data, dict):
             return all(isinstance(k, str) and isinstance(v, str)
@@ -102,7 +106,8 @@ class DataStream():
                     handled = True
                     break
             if not handled:
-                print(f"DataStream error - Can't process element in stream: {element}")
+                print(f"DataStream error - "
+                      f"Can't process element in stream: {element}")
 
     def print_processors_stats(self) -> None:
         print("== DataStream statistics ==")
@@ -110,7 +115,8 @@ class DataStream():
             print("No processor found, no data")
             return
         for proc in self._processors:
-            print(f"{proc.name}: total {proc._rank} items processed, remaining: {len(proc._data)} on processor")
+            print(f"{proc.name}: total {proc._rank} items processed, "
+                  f"fremaining: {len(proc._data)} on processor")
 
 
 def main() -> None:
@@ -129,8 +135,11 @@ def main() -> None:
     batch: list[Any] = [
         'Hello world',
         [3.14, -1, 2.71],
-        [{'log_level': 'WARNING', 'log_message': 'telnet access! Use ssh instead'},
-        {'log_level': 'INFO', 'log_message': 'user wil is connected'}],
+        [
+            {'log_level': 'WARNING',
+             'log_message': 'telnet access! Use ssh instead'},
+            {'log_level': 'INFO', 'log_message': 'user wil is connected'}
+        ],
         42,
         ['Hi', 'five'],
     ]
@@ -145,7 +154,8 @@ def main() -> None:
     ds.process_stream(batch)
     ds.print_processors_stats()
     print()
-    print("Consume some elements from the data processors: Numeric 3, Text 2, log 1")
+    print("Consume some elements from the "
+          "data processors: Numeric 3, Text 2, log 1")
     for _ in range(3):
         np.output()
     for _ in range(2):
@@ -153,6 +163,7 @@ def main() -> None:
     for _ in range(1):
         lp.output()
     ds.print_processors_stats()
+
 
 if __name__ == '__main__':
     main()
