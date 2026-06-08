@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from typing import Any
+from typing import Any, Protocol
 from abc import ABC, abstractmethod
 
 class DataProcessor(ABC):
