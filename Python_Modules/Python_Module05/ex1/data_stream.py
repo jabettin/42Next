@@ -142,6 +142,17 @@ def main() -> None:
     ds.register_processor(tp)
     ds.register_processor(lp)
     print("Send the same batch again")
+    ds.process_stream(batch)
+    ds.print_processors_stats()
+    print()
+    print("Consume some elements from the data processors: Numeric 3, Text 2, log 1")
+    for _ in range(3):
+        np.output()
+    for _ in range(2):
+        tp.output()
+    for _ in range(1):
+        lp.output()
+    ds.print_processors_stats()
 
 if __name__ == '__main__':
     main()
