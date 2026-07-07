@@ -1,6 +1,6 @@
-from abc import ABC, abstractmethod
 from ex0 import Creature
 from .capabilities import HealCapability, TransformCapability
+
 
 class Shiftling(Creature, TransformCapability):
     def __init__(self) -> None:
@@ -19,7 +19,7 @@ class Shiftling(Creature, TransformCapability):
         if self._transformed:
             return f"{self._name} performs a boosted strike!"
         else:
-            return f"{self._name} attacks normally"
+            return f"{self._name} attacks normally."
 
 
 class Morphagon(Creature, TransformCapability):
@@ -39,13 +39,28 @@ class Morphagon(Creature, TransformCapability):
         if self._transformed:
             return f"{self._name} unleashes a devastating morph strike!"
         else:
-            return f"{self._name} attacks normally!"
-
+            return f"{self._name} attacks normally."
 
 
 class Sproutling(Creature, HealCapability):
-    pass
+    def __init__(self) -> None:
+        Creature.__init__(self, "Sproutling", "Grass")
+        HealCapability.__init__(self)
+
+    def heal(self) -> str:
+        return f"{self._name} heals itself for a small amount"
+
+    def attack(self) -> str:
+        return f"{self._name} uses Vine Whip!"
 
 
 class Bloomelle(Creature, HealCapability):
-    pass
+    def __init__(self) -> None:
+        Creature.__init__(self, "Bloomelle", "Grass/Fairy")
+        HealCapability.__init__(self)
+
+    def heal(self) -> str:
+        return f"{self._name} heals itself and others for a large amount"
+
+    def attack(self) -> str:
+        return f"{self._name} uses Petal Dance!"
