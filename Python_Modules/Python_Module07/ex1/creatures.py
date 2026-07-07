@@ -1,13 +1,25 @@
 from abc import ABC, abstractmethod
-
+from ex0 import Creature
+from .capabilities import HealCapability, TransformCapability
 
 class Shiftling(Creature, TransformCapability):
     def __init__(self) -> None:
         Creature.__init__(self, "Shiftling", "Normal")
         TransformCapability.__init__(self)
 
+    def transform(self) -> str:
+        self._transformed = True
+        return f"{self._name} shifts into a sharper form!"
+
+    def revert(self) -> str:
+        self._transformed = False
+        return f"{self._name} returns to normal"
+
     def attack(self) -> str:
-        return f"{self._name} attacks normally"
+        if self._transformed:
+            return f"{self._name} performs a boosted strike!"
+        else:
+            return f"{self._name} attacks normally"
 
 
 class Morphagon(Creature, TransformCapability):
@@ -17,25 +29,23 @@ class Morphagon(Creature, TransformCapability):
 
     def transform(self) -> str:
         self._transformed = True
+        return f"{self._name} morphs into a dragonic battle form!"
 
     def revert(self) -> str:
         self._transformed = False
+        return f"{self._name} stabilizes its form."
 
     def attack(self) -> str:
-        if self._transformed == True:
-            return f"{self._name} attacks normally"
+        if self._transformed:
+            return f"{self._name} unleashes a devastating morph strike!"
         else:
-            return f"{self._name} unleashes a devastating morph strike"
+            return f"{self._name} attacks normally!"
 
-def testmorph(creature_a: Morphagon):
-    creature_a = Morphagon()
-    print(creature_a.describe())
-    print(creature_a.attack())
-    print(creature_a.transform())
-    print(creature_a.attack())
-    print(creature_a.revert())
-    print(creature_a.attack())
-def main():
-    testmorph()
-if __name__ == '__main__':
-    main()
+
+
+class Sproutling(Creature, HealCapability):
+    pass
+
+
+class Bloomelle(Creature, HealCapability):
+    pass
