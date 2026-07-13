@@ -4,6 +4,14 @@ from ex2 import BattleStrategy, NormalStrategy, AggressiveStrategy, DefensiveStr
 
 
 def battle(opponents: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
-    for i, (factory_a, factory_b) in enumerate(opponents)
-    try:
+    for i, (factory_a, strategy_a) in enumerate(opponents):
+        for factory_b, strategy_b in opponents[i + 1:]:
+            creature_a = factory_a.create_base()
+            creature_b = factory_b.create_base()
+            print(creature_a.describe())
+            print("vs.")
+            print(creature_b.describe())
+            print("now fight!")
+            try:
+                
 
