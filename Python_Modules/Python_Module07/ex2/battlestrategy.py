@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from ex0 import Creature
 from ex1 import HealCapability, TransformCapability
 
+
 class BattleStrategy(ABC):
     @abstractmethod
     def is_valid(self, creature: Creature) -> bool:
@@ -13,7 +14,9 @@ class BattleStrategy(ABC):
 
     def _require_valid(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise InvalidStrategyError(f"Invalid Creature '{creature._name}' for this {type(self).__name__.lower()}")
+            raise InvalidStrategyError(f"Invalid Creature '{creature._name}' "
+                                       f"for this "
+                                       f"{type(self).__name__.lower()}")
 
 
 class InvalidStrategyError(Exception):

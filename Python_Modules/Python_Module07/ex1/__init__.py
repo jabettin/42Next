@@ -1,5 +1,6 @@
 from .capabilities import HealCapability, TransformCapability
-from .factories import CreatureFactory, TransformCreatureFactory, HealingCreatureFactory
+from .factories import (CreatureFactory, TransformCreatureFactory,
+                        HealingCreatureFactory)
 
 
 __all__ = [
