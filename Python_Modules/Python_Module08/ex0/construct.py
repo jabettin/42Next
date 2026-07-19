@@ -18,15 +18,14 @@ def matrix_status(venv_active: bool) -> str:
 def path_status(venv_active: bool) -> str:
     if venv_active:
         return (
-                f"Current Python: {sys.executable}\n"
-                "Virtual environment: matrix_env\n"
-                f"Environment path: {os.path.dirname(os.path.realpath(__file__))}\n"
-                f"{sys.path[0]}"
+            f"Current Python: {sys.executable}\n"
+            f"Virtual environment: {os.path.basename(sys.prefix)}\n"
+            f"Environment path: {sys.prefix}\n"
         )
     else:
         return (
             f"Current Python: {sys.executable}\n"
-            "Virtual environment: None detected"
+            "Virtual environment: None detected\n"
         )
 
 
@@ -37,7 +36,7 @@ def matrix_instructions(venv_active: bool) -> str:
             f"{site.getsitepackages()[0]}"
             
         )
-    if not venv_active:
+    else:
         return (
             "To enter the construct run:\n"
             "python -m venv matrix_env\n"
@@ -48,11 +47,26 @@ def matrix_instructions(venv_active: bool) -> str:
         )
 
 
+def matrix_message(venv_active: bool) -> str:
+    if venv_active:
+        return (
+            "SUCCESS: You're in an isolated environment!\n"
+            "Safe to install packages without affecting\n"
+            "the global system.\n"
+        )
+    else:
+        return (
+            "WARNING: You're in a global environment!\n"
+            "The machines can see everything you install\n"
+        )
+
+
 def matrix():
     venv_active = in_venv()
     print()
     print(matrix_status(venv_active))
     print(path_status(venv_active))
+    print(matrix_message(venv_active))
     print(matrix_instructions(venv_active))
 
 
