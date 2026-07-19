@@ -31,11 +31,14 @@ def path_status(venv_active: bool) -> str:
 
 def matrix_instructions(venv_active: bool) -> str:
     if venv_active:
-        return (
-            "Package installation path\n"
-            f"{site.getsitepackages()[0]}"
-            
-        )
+        packages = site.getsitepackages()
+        if packages:
+            return (
+                "Package installation path\n"
+                f"{packages[0]}"
+            )
+        else:
+            return "Package installation path: unavailable"
     else:
         return (
             "To enter the construct run:\n"
