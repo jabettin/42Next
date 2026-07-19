@@ -59,7 +59,7 @@ def matrix_message(venv_active: bool) -> str:
         )
     else:
         return (
-            "WARNING: You're in a global environment!\n"
+            "WARNING: You're in the global environment!\n"
             "The machines can see everything you install\n"
         )
 
