@@ -19,13 +19,13 @@ def path_status(venv_active: bool) -> str:
     if venv_active:
         return (
             f"Current Python: {sys.executable}\n"
-            f"Virtual environment: {os.path.basename(sys.prefix)}\n"
+            f"Virtual Environment: {os.path.basename(sys.prefix)}\n"
             f"Environment path: {sys.prefix}\n"
         )
     else:
         return (
             f"Current Python: {sys.executable}\n"
-            "Virtual environment: None detected\n"
+            "Virtual Environment: None detected\n"
         )
 
 
@@ -34,14 +34,14 @@ def matrix_instructions(venv_active: bool) -> str:
         packages = site.getsitepackages()
         if packages:
             return (
-                "Package installation path\n"
+                "Package installation path:\n"
                 f"{packages[0]}"
             )
         else:
             return "Package installation path: unavailable"
     else:
         return (
-            "To enter the construct run:\n"
+            "To enter the construct, run:\n"
             "python -m venv matrix_env\n"
             "source matrix_env/bin/activate # On Unix\n"
             r"source matrix_env\scripts\activate # On Windows"
@@ -64,7 +64,7 @@ def matrix_message(venv_active: bool) -> str:
         )
 
 
-def matrix():
+def matrix() -> None:
     venv_active = in_venv()
     print()
     print(matrix_status(venv_active))
