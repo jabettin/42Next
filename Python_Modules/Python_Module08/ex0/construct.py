@@ -44,7 +44,7 @@ def matrix_instructions(venv_active: bool) -> str:
             "To enter the construct, run:\n"
             "python -m venv matrix_env\n"
             "source matrix_env/bin/activate # On Unix\n"
-            r"source matrix_env\scripts\activate # On Windows"
+            r"matrix_env\scripts\activate # On Windows"
             "\n\n"
             "Then run this program again"
         )
