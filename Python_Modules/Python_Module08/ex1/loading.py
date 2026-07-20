@@ -9,4 +9,12 @@ import requests
 
 
 def api_call() -> None:
-    r = requests.get()
+    try:
+        r = requests.get("https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&per_page=300&date=2022")
+        data = r.json()
+        print(type(data), len(data))
+        print(data[0])
+        print(data[1][:2])
+    except ConnectionError as e:
+        print(f"The module: {data.__name__} has not been installed {e}")
+        continue()
