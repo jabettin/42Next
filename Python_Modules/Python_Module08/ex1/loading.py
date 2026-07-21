@@ -16,5 +16,5 @@ def api_call() -> None:
         print(data[0])
         print(data[1][:2])
     except ConnectionError as e:
-        print(f"The module: {data.__name__} has not been installed {e}")
+        print(f"The module:  has not been installed {e}")
         continue()
