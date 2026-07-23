@@ -21,7 +21,7 @@ def import_handler() -> dict:
     return accumulator
 
 
-def api_call(modules: dict) -> None:
+def api_call(modules: dict) -> list | None:
     requests_module = modules.get("requests")
     if requests_module is None:
         print("requests unavailable, unable to fetch data")
@@ -35,7 +35,12 @@ def api_call(modules: dict) -> None:
         return
     return data[1]
 
-def fallback_data_gen() -> list:
+
+def fallback_data_gen(modules: dict) -> list:
+    numpy_module = modules.get("numpy")
+    if numpy_module is None:
+        print("numpy unavailable, unable to generate fallback data")
+        return None
     country_names = [
         "The Netherlands",
         "Germany",
@@ -45,12 +50,24 @@ def fallback_data_gen() -> list:
         "Switzerland",
         "Poland"
     ]
-    countries = {}
-    generated_pop = numpy.random.randint(10000000000, size=(125, 1))
-    for names, pop in enumerate(country_names):
-        countries[country_names] = generated_pop
-        print(names, pop)
+    populations = numpy_module.random.randint(100_000, 1_500_000_000, size=len(country_names))
+    fallback = []
+    for name, pop in zip(country_names, populations):
+        fallback.append({"country": {"value": name}, "value": int(pop)})
+    return fallback
 
 
-def data_validator() -> None:
-    
+def get_dataset(modules: dict) -> list | None:
+    data = api_call(modules)
+    if data is not None:
+        return data
+    print("Falling back to simulated data..")
+    fallback_data_gen(modules)
+
+
+def matrix():
+    ...
+
+
+if __name__ == '__main__':
+    matrix()
