@@ -65,6 +65,16 @@ def get_dataset(modules: dict) -> list | None:
     fallback_data_gen(modules)
 
 
+def data_modification(modules: dict, data: dict[dict]) -> list | None:
+    panda_module = modules.get("pandas")
+    if panda_module is None:
+        print("pandas unavailable, unavailable to modify data")
+        return
+    try:
+        panda_module.json_normalize(data)
+        data.sort_values(by="population", ascending=False)
+        
+
 def matrix():
     ...
 
